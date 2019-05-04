@@ -1,0 +1,142 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Studenti extends CI_Controller
+{
+  function __construct()
+  {
+    parent::__construct();
+    $this->load->helper('form');
+    $this->load->helper('url');
+    $this->load->library('form_validation');
+    $this->load->model('Student_model');
+    $this->load->library('pagination');
+  }
+  public function index()
+  {
+    $data = array();
+    $data['studenti'] = $this->Student_model->getRows();
+    $data['title'] = 'Študenti | PortalBrigad';
+
+    $this->load->view('templates/header', $data);
+    $this->load->view('templates/menu');
+    $this->load->view('studenti/index', $data);
+    $this->load->view('templates/footer');
+  }
+
+  // Zobrazenie detailu o triede
+  public function view($id)
+  {
+    $data = array();
+    //kontrola, ci bolo zaslane id riadka
+    if (!empty($id)) {
+      $data['student'] = $this->Student_model->getRows($id);
+      $data['title'] = $data['student']['meno'] . ' ' . $data['student']['priezvisko'] . ' | PortalBrigad';
+      //nahratie detailu zaznamu
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/menu');
+      $this->load->view('studenti/view', $data);
+      $this->load->view('templates/footer');
+    } else {
+      redirect('/studenti');
+    }
+  }
+  // pridanie zaznamu
+  public function add()
+  {
+    $data = array();
+    $postData = array();
+
+    $this->form_validation->set_error_delimiters('', '<br>');
+
+    $this->form_validation->set_rules('meno', 'meno študenta', 'required');
+    $this->form_validation->set_rules('priezvisko', 'priezvisko študenta', 'required');
+    $this->form_validation->set_rules('email', 'email študenta', 'required');
+    $this->form_validation->set_rules('telefon', 'tel. číslo študenta', 'required');
+    $this->form_validation->set_rules('vzdelanie', 'vzdelanie študenta', 'required');
+
+    $data['post'] = $postData;
+    $data['title'] = 'Vytvoriť študenta';
+    $data['action'] = 'Pridať';
+
+    if ($this->form_validation->run() === FALSE) {
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/menu');
+      $this->load->view('studenti/add-edit', $data);
+      $this->load->view('templates/footer');
+    } else {
+      $postData = array(
+        'meno' => $this->input->post('meno'),
+        'priezvisko' => $this->input->post('priezvisko'),
+        'email' => $this->input->post('email'),
+        'telefon' => $this->input->post('telefon'),
+        'vzdelanie' => $this->input->post('vzdelanie')
+      );
+      $insert = $this->Student_model->insert($postData);
+      if ($insert) {
+        $this->session->set_userdata('success_msg', 'Študent bol úspešne vložený');
+        redirect('/studenti');
+      } else {
+        $data['error_msg'] = 'Máme problém.';
+      }
+    }
+  }
+
+  // aktualizacia dat
+  public function edit($id)
+  {
+    $data = array();
+    //ziskanie dat z tabulky
+    $postData = $this->Student_model->getRows($id);
+
+    $this->form_validation->set_error_delimiters('', '<br>');
+    //nastavenie validacie
+    $this->form_validation->set_rules('meno', 'názov študenta', 'required');
+    $this->form_validation->set_rules('priezvisko', 'priezvisko študenta', 'required');
+    $this->form_validation->set_rules('email', 'email študenta', 'required');
+    $this->form_validation->set_rules('telefon', 'tel. číslo študenta', 'required');
+    $this->form_validation->set_rules('vzdelanie', 'vzdelanie študenta', 'required');
+
+    $data['post'] = $postData;
+    $data['title'] = 'Úprava študenta';
+    $data['action'] = 'Editovať';
+    //zobrazenie formulara pre vlozenie a editaciu dat
+    if ($this->form_validation->run() === FALSE) {
+      $this->load->view('templates/header', $data);
+      $this->load->view('templates/menu');
+      $this->load->view('studenti/add-edit', $data);
+      $this->load->view('templates/footer');
+    } else {
+      $postData = array(
+        'meno' => $this->input->post('meno'),
+        'priezvisko' => $this->input->post('priezvisko'),
+        'email' => $this->input->post('email'),
+        'telefon' => $this->input->post('telefon'),
+        'vzdelanie' => $this->input->post('vzdelanie')
+      );
+      $update = $this->Student_model->update($postData, $id);
+      if ($update) {
+        $this->session->set_userdata('success_msg', 'Študent bol aktualizovaný');
+        redirect('/studenti');
+      } else {
+        $data['error_msg'] = 'Máme problém.';
+      }
+    }
+  }
+
+  // odstranenie dat
+  public function delete($id)
+  {
+    //overenie, ci id nie je prazdne
+    if ($id) {
+      //odstranenie zaznamu
+      $delete = $this->Student_model->delete($id);
+      if ($delete) {
+        $this->session->set_userdata('success_msg', 'Študent bol vymazaný.');
+      } else {
+        $this->session->set_userdata('error_msg', 'Pri vymazávaní nastala chyba, skúste znova.');
+      }
+    }
+    redirect('/studenti');
+  }
+}

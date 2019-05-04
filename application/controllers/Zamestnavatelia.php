@@ -55,7 +55,7 @@ class Zamestnavatelia extends CI_Controller
         $this->form_validation->set_rules('telefon', 'tel. číslo zamestnávateľa', 'required');
 
         $data['post'] = $postData;
-        $data['title'] = 'Vytvoriť triedu';
+        $data['title'] = 'Vytvoriť zamestnávateľa';
         $data['action'] = 'Pridať';
 
         if ($this->form_validation->run() === FALSE) {

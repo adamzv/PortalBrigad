@@ -17,7 +17,6 @@ CREATE  TABLE IF NOT EXISTS `brigadyzv`.`zamestnavatelia` (
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `idzamestnavatelia_UNIQUE` (`id` ASC) ,
   UNIQUE INDEX `nazov_UNIQUE` (`nazov` ASC) ,
-  UNIQUE INDEX `adresa_UNIQUE` (`adresa` ASC) ,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
   UNIQUE INDEX `telefon_UNIQUE` (`telefon` ASC) )
 ENGINE = InnoDB;
@@ -34,7 +33,9 @@ CREATE  TABLE IF NOT EXISTS `brigadyzv`.`studenti` (
   `telefon` VARCHAR(16) NOT NULL ,
   `vzdelanie` VARCHAR(30) NOT NULL ,
   PRIMARY KEY (`idstudenti`) ,
-  UNIQUE INDEX `idstudenti_UNIQUE` (`idstudenti` ASC) )
+  UNIQUE INDEX `idstudenti_UNIQUE` (`idstudenti` ASC) ,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) ,
+  UNIQUE INDEX `telefon_UNIQUE` (`telefon` ASC) )
 ENGINE = InnoDB;
 
 
@@ -64,7 +65,6 @@ CREATE  TABLE IF NOT EXISTS `brigadyzv`.`brigady` (
   `idkategorie` INT NOT NULL ,
   PRIMARY KEY (`idbrigady`) ,
   UNIQUE INDEX `idbrigady_UNIQUE` (`idbrigady` ASC) ,
-  UNIQUE INDEX `nazov_UNIQUE` (`nazov` ASC) ,
   INDEX `fk_brigady_zamestnavatelia_idx` (`idzamestnavatelia` ASC) ,
   INDEX `fk_brigady_kategorie1_idx` (`idkategorie` ASC) ,
   CONSTRAINT `fk_brigady_zamestnavatelia`

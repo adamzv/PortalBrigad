@@ -1,3 +1,5 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed'); ?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand bg-primary navbar-dark border-bottom">
 	<!-- Left navbar links -->

@@ -15,7 +15,7 @@ class Zamestnavatelia extends CI_Controller
     {
         $data = array();
         $data['zamestnavatelia'] = $this->Zamestnavatel_model->getRows();
-        $data['title'] = 'Zamestnavatelia - List';
+        $data['title'] = 'Zamestnávatelia | PortalBrigad';
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/menu');
@@ -29,11 +29,11 @@ class Zamestnavatelia extends CI_Controller
         $data = array();
         //kontrola, ci bolo zaslane id riadka
         if (!empty($id)) {
-            $data['zamestnavatelia'] = $this->Zamestnavatel_model->getRows($id);
-            $data['title'] = '#' . $data['zamestnavatelia']['id'];
+            $data['zamestnavatel'] = $this->Zamestnavatel_model->getRows($id);
+            $data['title'] = $data['zamestnavatel']['nazov'] . ' | PortalBrigad';
             //nahratie detailu zaznamu
             $this->load->view('templates/header', $data);
-            $this->load->view('templates/menu', $data);
+            $this->load->view('templates/menu');
             $this->load->view('zamestnavatelia/view', $data);
             $this->load->view('templates/footer');
         } else {
@@ -65,13 +65,12 @@ class Zamestnavatelia extends CI_Controller
                 }
             }
         }
-        //  $data['users'] = $this->Zamestnavatel_model->get_users_dropdown();
-        //   $data['users_selected'] = '';
         $data['post'] = $postData;
         $data['title'] = 'Vytvoriť triedu';
         $data['action'] = 'Pridať';
         //zobrazenie formulara pre vlozenie a editaciu dat
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/menu');
         $this->load->view('zamestnavatelia/add-edit', $data);
         $this->load->view('templates/footer');
     }
@@ -84,10 +83,16 @@ class Zamestnavatelia extends CI_Controller
         //zistenie, ci bola zaslana poziadavka na aktualizaciu
         if ($this->input->post('postSubmit')) {
             //definicia pravidiel validacie
-            $this->form_validation->set_rules('nazov', 'nazov', 'required');
+            $this->form_validation->set_rules('nazov', 'názov zamestnávateľa', 'required');
+            $this->form_validation->set_rules('adresa', 'adresa zamestnávateľa', 'required');
+            $this->form_validation->set_rules('email', 'email zamestnávateľa', 'required');
+            $this->form_validation->set_rules('telefon', 'tel. číslo zamestnávateľa', 'required');
             // priprava dat pre aktualizaciu
             $postData = array(
                 'nazov' => $this->input->post('nazov'),
+                'adresa' => $this->input->post('adresa'),
+                'email' => $this->input->post('email'),
+                'telefon' => $this->input->post('telefon')
             );
             //validacia zaslanych dat
             if ($this->form_validation->run() == true) {
@@ -101,15 +106,14 @@ class Zamestnavatelia extends CI_Controller
                 }
             }
         }
-        //  $data['zamestnavatelia'] = $this->Zamestnavatel_model->get_users_dropdown();
-        // $data['users_selected'] = $postData['user'];
         $data['post'] = $postData;
         $data['title'] = 'Úprava zamestnávateľa';
         $data['action'] = 'Editovať';
         //zobrazenie formulara pre vlozenie a editaciu dat
-        //$this->load->view('templates/header', $data);
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/menu');
         $this->load->view('zamestnavatelia/add-edit', $data);
-        //$this->load->view('templates/footer');
+        $this->load->view('templates/footer');
     }
     // odstranenie dat
     public function delete($id)

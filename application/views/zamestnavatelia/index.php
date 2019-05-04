@@ -27,6 +27,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 	<!-- Main content -->
 	<section class="content">
 		<div class="container-fluid">
+			<?php if ($this->session->userdata['success_msg'] != "") : ?>
+				<div class="col-md-12 alert alert-success alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+					<h5><i class="icon fa fa-check"></i> Úspech!</h5>
+					<?php echo $this->session->userdata['success_msg']; ?>
+				</div>
+				<?php $this->session->userdata['success_msg'] = "";
+			endif; ?>
 			<section class="col-md-12 connectedSortable">
 				<!-- Custom tabs (Charts with tabs)-->
 				<div class="card card-primary card-outline">

@@ -13,7 +13,7 @@ CREATE  TABLE IF NOT EXISTS `brigadyzv`.`zamestnavatelia` (
   `nazov` VARCHAR(30) NOT NULL ,
   `adresa` VARCHAR(45) NOT NULL ,
   `email` VARCHAR(30) NOT NULL ,
-  `telefon` VARCHAR(13) NOT NULL ,
+  `telefon` VARCHAR(16) NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `idzamestnavatelia_UNIQUE` (`id` ASC) ,
   UNIQUE INDEX `nazov_UNIQUE` (`nazov` ASC) ,
@@ -31,7 +31,7 @@ CREATE  TABLE IF NOT EXISTS `brigadyzv`.`studenti` (
   `meno` VARCHAR(20) NOT NULL ,
   `priezvisko` VARCHAR(20) NOT NULL ,
   `email` VARCHAR(30) NOT NULL ,
-  `telefon` VARCHAR(13) NOT NULL ,
+  `telefon` VARCHAR(16) NOT NULL ,
   `vzdelanie` VARCHAR(30) NOT NULL ,
   PRIMARY KEY (`idstudenti`) ,
   UNIQUE INDEX `idstudenti_UNIQUE` (`idstudenti` ASC) )

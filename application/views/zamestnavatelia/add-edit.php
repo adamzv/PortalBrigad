@@ -33,54 +33,55 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form method="post" role="form" action="<?php echo site_url('zamestnavatelia/edit/' . $post['id']); ?>">
-          <div class="card-body">
-            <?php
-            if (!empty($success_msg)) {
-              echo '<div class="alert alert-success">' . $success_msg . '</div>';
-            } elseif (!empty($error_msg)) {
-              echo '<div class="alert alert-danger">' . $error_msg . '</div>';
-            }
-            ?>
-            <div class="form-group">
-              <label for="nazov">Názov zamestnávateľa:</label>
-              <input type="text" class="form-control" id="nazov" name="nazov" value="<?php echo $post['nazov']; ?>">
-            </div>
-            <div class="form-group">
-              <label for="adresa">Adresa</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
-                </div>
-                <input type="text" class="form-control" id="adresa" name="adresa" value="<?php echo $post['adresa']; ?>">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="email">Email:</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-at"></i></span>
-                </div>
-                <input type="email" class="form-control" id="email" name="email" value="<?php echo $post['email']; ?>">
-              </div>
-            </div>
-            <div class="form-group">
-              <label>Tel. číslo:</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-phone"></i></span>
-                </div>
-                <input type="text" class="form-control" data-inputmask="'mask': '+421 ### ### ###'" name="telefon" id="telefon" value="<?php echo $post['telefon']; ?>">
-              </div>
-              <!-- /.input group -->
-            </div>
-          </div>
-          <!-- /.card-body -->
 
-          <div class="card-footer">
-            <button type="submit" name="postSubmit" class="btn btn-primary"><?php echo $action; ?></button>
+        <?php if ($action == 'Editovať') {
+          echo form_open('zamestnavatelia/edit/' . $post['id']);
+        } else {
+          echo form_open('zamestnavatelia/add/');
+        } ?>
+        <div class="card-body">
+          <?php if (validation_errors()) {
+            echo '<div class="alert alert-danger">' . validation_errors() . '</div>';
+          } ?>
+          <div class="form-group">
+            <label for="nazov">Názov zamestnávateľa:</label>
+            <input type="text" class="form-control" id="nazov" name="nazov" value="<?php echo !empty($post['nazov']) ? $post['nazov'] : ''; ?>">
           </div>
-        </form>
+          <div class="form-group">
+            <label for="adresa">Adresa</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
+              </div>
+              <input type="text" class="form-control" id="adresa" name="adresa" value="<?php echo !empty($post['adresa']) ? $post['adresa'] : ''; ?>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-at"></i></span>
+              </div>
+              <input type="email" class="form-control" id="email" name="email" value="<?php echo !empty($post['email']) ? $post['email'] : ''; ?>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Tel. číslo:</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-phone"></i></span>
+              </div>
+              <input type="text" class="form-control" data-inputmask="'mask': '+421 ### ### ###'" name="telefon" id="telefon" value="<?php echo !empty($post['telefon']) ? $post['telefon'] : ''; ?>">
+            </div>
+            <!-- /.input group -->
+          </div>
+        </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+          <input type="submit" name="postSubmit" class="btn btn-primary" value="<?php echo $action; ?>">
+        </div>
+        <?php echo form_close(); ?>
       </div>
     </div>
   </section>

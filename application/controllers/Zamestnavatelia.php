@@ -7,6 +7,7 @@ class Zamestnavatelia extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('form');
+        $this->load->helper('url');
         $this->load->library('form_validation');
         $this->load->model('Zamestnavatel_model');
         $this->load->library('pagination');
@@ -45,76 +46,80 @@ class Zamestnavatelia extends CI_Controller
     {
         $data = array();
         $postData = array();
-        //zistenie, ci bola zaslana poziadavka na pridanie zazanmu
-        if ($this->input->post('postSubmit')) {
-            //definicia pravidiel validacie
-            $this->form_validation->set_rules('nazov', 'názov', 'required');
-            //priprava dat pre vlozenie
-            $postData = array(
-                'nazov' => $this->input->post('nazov'),
-            );
-            //validacia zaslanych dat
-            if ($this->form_validation->run() == true) {
-                //vlozenie dat
-                $insert = $this->Zamestnavatel_model->insert($postData);
-                if ($insert) {
-                    $this->session->set_userdata('success_msg', 'Zamestnávateľ bol úspešne vložený');
-                    redirect('/zamestnavatelia');
-                } else {
-                    $data['error_msg'] = 'Máme problém.';
-                }
-            }
-        }
+
+        $this->form_validation->set_error_delimiters('', '<br>');
+
+        $this->form_validation->set_rules('nazov', 'názov zamestnávateľa', 'required');
+        $this->form_validation->set_rules('adresa', 'adresa zamestnávateľa', 'required');
+        $this->form_validation->set_rules('email', 'email zamestnávateľa', 'required');
+        $this->form_validation->set_rules('telefon', 'tel. číslo zamestnávateľa', 'required');
+
         $data['post'] = $postData;
         $data['title'] = 'Vytvoriť triedu';
         $data['action'] = 'Pridať';
-        //zobrazenie formulara pre vlozenie a editaciu dat
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu');
-        $this->load->view('zamestnavatelia/add-edit', $data);
-        $this->load->view('templates/footer');
-    }
-    // aktualizacia dat
-    public function edit($id)
-    {
-        $data = array();
-        //ziskanie dat z tabulky
-        $postData = $this->Zamestnavatel_model->getRows($id);
-        //zistenie, ci bola zaslana poziadavka na aktualizaciu
-        if ($this->input->post('postSubmit')) {
-            //definicia pravidiel validacie
-            $this->form_validation->set_rules('nazov', 'názov zamestnávateľa', 'required');
-            $this->form_validation->set_rules('adresa', 'adresa zamestnávateľa', 'required');
-            $this->form_validation->set_rules('email', 'email zamestnávateľa', 'required');
-            $this->form_validation->set_rules('telefon', 'tel. číslo zamestnávateľa', 'required');
-            // priprava dat pre aktualizaciu
+
+        if ($this->form_validation->run() === FALSE) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu');
+            $this->load->view('zamestnavatelia/add-edit', $data);
+            $this->load->view('templates/footer');
+        } else {
             $postData = array(
                 'nazov' => $this->input->post('nazov'),
                 'adresa' => $this->input->post('adresa'),
                 'email' => $this->input->post('email'),
                 'telefon' => $this->input->post('telefon')
             );
-            //validacia zaslanych dat
-            if ($this->form_validation->run() == true) {
-                //aktualizacia dat
-                $update = $this->Zamestnavatel_model->update($postData, $id);
-                if ($update) {
-                    $this->session->set_userdata('success_msg', 'Zamestnavateľ bol aktualizovaný');
-                    redirect('/zamestnavatelia');
-                } else {
-                    $data['error_msg'] = 'Máme problém.';
-                }
+            $insert = $this->Zamestnavatel_model->insert($postData);
+            if ($insert) {
+                $this->session->set_userdata('success_msg', 'Zamestnávateľ bol úspešne vložený');
+                redirect('/zamestnavatelia');
+            } else {
+                $data['error_msg'] = 'Máme problém.';
             }
         }
+    }
+
+    // aktualizacia dat
+    public function edit($id)
+    {
+        $data = array();
+        //ziskanie dat z tabulky
+        $postData = $this->Zamestnavatel_model->getRows($id);
+
+        $this->form_validation->set_error_delimiters('', '<br>');
+        //nastavenie validacie
+        $this->form_validation->set_rules('nazov', 'názov zamestnávateľa', 'required');
+        $this->form_validation->set_rules('adresa', 'adresa zamestnávateľa', 'required');
+        $this->form_validation->set_rules('email', 'email zamestnávateľa', 'required');
+        $this->form_validation->set_rules('telefon', 'tel. číslo zamestnávateľa', 'required');
+
         $data['post'] = $postData;
         $data['title'] = 'Úprava zamestnávateľa';
         $data['action'] = 'Editovať';
         //zobrazenie formulara pre vlozenie a editaciu dat
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/menu');
-        $this->load->view('zamestnavatelia/add-edit', $data);
-        $this->load->view('templates/footer');
+        if ($this->form_validation->run() === FALSE) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/menu');
+            $this->load->view('zamestnavatelia/add-edit', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $postData = array(
+                'nazov' => $this->input->post('nazov'),
+                'adresa' => $this->input->post('adresa'),
+                'email' => $this->input->post('email'),
+                'telefon' => $this->input->post('telefon')
+            );
+            $update = $this->Zamestnavatel_model->update($postData, $id);
+            if ($update) {
+                $this->session->set_userdata('success_msg', 'Zamestnávateľ bol aktualizovaný');
+                redirect('/zamestnavatelia');
+            } else {
+                $data['error_msg'] = 'Máme problém.';
+            }
+        }
     }
+
     // odstranenie dat
     public function delete($id)
     {

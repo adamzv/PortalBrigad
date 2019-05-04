@@ -149,11 +149,12 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 
 		<!-- Sidebar Menu -->
 		<nav class="mt-2">
+			<?php $active = $this->uri->segment(1); ?>
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 				<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 				<li class="nav-item">
-					<a href="<?php echo site_url('zamestnavatelia/'); ?>" class="nav-link active">
+					<a href="<?php echo site_url('zamestnavatelia/'); ?>" class="nav-link <?php if ($active == 'zamestnavatelia') echo 'active'; ?>">
 						<i class="nav-icon fa fa-briefcase"></i>
 						<p>
 							Zamestnávatelia
@@ -161,7 +162,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo site_url('studenti/'); ?>" class="nav-link">
+					<a href="<?php echo site_url('studenti/'); ?>" class="nav-link <?php if ($active == 'studenti') echo 'active'; ?>">
 						<i class="nav-icon fa fa-user"></i>
 						<p>
 							Študenti

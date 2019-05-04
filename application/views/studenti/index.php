@@ -40,7 +40,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <div class="card card-primary card-outline">
           <div class="card-header d-flex p-0">
             <h3 class="card-title p-3">
-              <i class="fa fa-briefcase mr-1"></i>
+              <i class="fa fa-user mr-1"></i>
               Študenti
             </h3>
             <!-- zmenit na button -->
@@ -82,9 +82,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                       <td><?php echo $student['telefon']; ?></td>
                       <td><?php echo $student['vzdelanie']; ?></td>
                       <td>
-                        <a href="<?php echo site_url('studenti/view/' . $student['id']); ?>" class="fa fa-eye"></a>
-                        <a href="<?php echo site_url('studenti/edit/' . $student['id']); ?>" class="fa fa-edit"></a>
-                        <a href="<?php echo site_url('studenti/delete/' . $student['id']); ?>" data-href="<?php echo site_url('studenti/delete/' . $student['id']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
+                        <a href="<?php echo site_url('studenti/view/' . $student['idstudenti']); ?>" class="fa fa-eye"></a>
+                        <a href="<?php echo site_url('studenti/edit/' . $student['idstudenti']); ?>" class="fa fa-edit"></a>
+                        <a href="<?php echo site_url('studenti/delete/' . $student['idstudenti']); ?>" data-href="<?php echo site_url('studenti/delete/' . $student['idstudenti']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
                       </td>
                     </tr>
                   <?php endforeach;

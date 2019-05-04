@@ -128,9 +128,9 @@ class Zamestnavatelia extends CI_Controller
             //odstranenie zaznamu
             $delete = $this->Zamestnavatel_model->delete($id);
             if ($delete) {
-                $this->session->set_userdata('success_msg', 'Student has been removed successfully.');
+                $this->session->set_userdata('success_msg', 'Zamestnávateľ bol vymazaný.');
             } else {
-                $this->session->set_userdata('error_msg', 'Some problems occurred, please try again.');
+                $this->session->set_userdata('error_msg', 'Pri vymazávaní nastala chyba, skúste znova.');
             }
         }
         redirect('/zamestnavatelia');

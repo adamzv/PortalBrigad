@@ -82,7 +82,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 											<td>
 												<a href="<?php echo site_url('zamestnavatelia/view/' . $zamestnavatel['id']); ?>" class="fa fa-eye"></a>
 												<a href="<?php echo site_url('zamestnavatelia/edit/' . $zamestnavatel['id']); ?>" class="fa fa-edit"></a>
-												<a href="<?php echo site_url('zamestnavatelia/delete/' . $zamestnavatel['id']); ?>" class="fa fa-trash" onclick="return confirm('Are you sure to delete?')"></a>
+												<a href="<?php echo site_url('zamestnavatelia/delete/' . $zamestnavatel['id']); ?>" data-href="<?php echo site_url('zamestnavatelia/delete/' . $zamestnavatel['id']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
 											</td>
 										</tr>
 									<?php endforeach;
@@ -94,6 +94,26 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 							</tbody>
 						</table>
 						<!-- /.card-body -->
+						<!-- Modal -->
+						<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title text-danger" id="deleteModalLabel">DANGER ZONE</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										Chcete vymazať zamestnávateľa?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvoriť</button>
+										<a class="btn btn-danger btn-ok">Vymazať</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<!-- /.card -->
 					<!-- Main row -->

@@ -4,8 +4,12 @@ $(document).ready(function() {
 	Inputmask().mask(document.querySelectorAll("input"));
 });
 
+// DataTables
 $(document).ready(function() {
 	$("#studentiTable").DataTable();
+});
+$(document).ready(function() {
+	$("#zamestnavateliaTable").DataTable();
 });
 
 $("#deleteModal").on("show.bs.modal", function(e) {

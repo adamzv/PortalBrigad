@@ -27,6 +27,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datepicker/datepicker3.css" />
 	<!-- Daterange picker -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/daterangepicker/daterangepicker-bs3.css" />
+	<!-- DataTables -->
+	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap4.min.css" />
 	<!-- bootstrap wysihtml5 - text editor -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" />
 	<!-- Google Font: Source Sans Pro -->

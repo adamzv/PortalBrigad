@@ -6,7 +6,6 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$("#studentiTable").DataTable();
-	console.log("funguje");
 });
 
 $("#deleteModal").on("show.bs.modal", function(e) {

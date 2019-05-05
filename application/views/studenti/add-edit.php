@@ -13,7 +13,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Domov</a></li>
-            <li class="breadcrumb-item active">Študenti</li>
+            <li class="breadcrumb-item active"><a href="<?php echo site_url('studenti/'); ?>">Študenti</a></li>
           </ol>
         </div>
         <!-- /.col -->

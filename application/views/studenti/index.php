@@ -52,7 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </ul>
           </div>
           <!-- /.card-header -->
-          <div class="card-body table-responsive p-0">
+          <div class="card-body table-responsive p-2">
             <?php if (!empty($success_msg)) { ?>
               <div class="col-12">
                 <div class="alert alert-success"><?php echo $success_msg; ?></div>
@@ -62,39 +62,48 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 <div class="alert alert-danger"><?php echo $error_msg; ?></div>
               </div>
             <?php } ?>
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th width="16%">Meno</th>
-                  <th width="16%">Priezvisko</th>
-                  <th width="16%">Email</th>
-                  <th width="16%">Telefón</th>
-                  <th width="16%">Vzdelanie</th>
-                  <th width="15%">Akcie</th>
-                </tr>
-              </thead>
-              <tbody id="userData">
-                <?php if (!empty($studenti)) : foreach ($studenti as $student) : ?>
-                    <tr>
-                      <td><?php echo $student['meno']; ?></td>
-                      <td><?php echo $student['priezvisko']; ?></td>
-                      <td><?php echo $student['email']; ?></td>
-                      <td><?php echo $student['telefon']; ?></td>
-                      <td><?php echo $student['vzdelanie']; ?></td>
-                      <td>
-                        <a href="<?php echo site_url('studenti/view/' . $student['idstudenti']); ?>" class="fa fa-eye"></a>
-                        <a href="<?php echo site_url('studenti/edit/' . $student['idstudenti']); ?>" class="fa fa-edit"></a>
-                        <a href="<?php echo site_url('studenti/delete/' . $student['idstudenti']); ?>" data-href="<?php echo site_url('studenti/delete/' . $student['idstudenti']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
-                      </td>
-                    </tr>
-                  <?php endforeach;
-              else : ?>
-                  <tr>
-                    <td colspan="4">Žiadny študenti</td>
-                  </tr>
-                <?php endif; ?>
-              </tbody>
-            </table>
+            <div id="studentiTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+              <div class="row">
+                <div class="col-sm-12"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <table id="studentiTable" class="table table-hover dataTable">
+                    <thead>
+                      <tr>
+                        <th width="19%">Meno</th>
+                        <th width="19%">Priezvisko</th>
+                        <th width="19%">Email</th>
+                        <th width="19%">Telefón</th>
+                        <th width="19%">Vzdelanie</th>
+                        <th width="10%">Akcie</th>
+                      </tr>
+                    </thead>
+                    <tbody id="userData">
+                      <?php if (!empty($studenti)) : foreach ($studenti as $student) : ?>
+                          <tr>
+                            <td><?php echo $student['meno']; ?></td>
+                            <td><?php echo $student['priezvisko']; ?></td>
+                            <td><?php echo $student['email']; ?></td>
+                            <td><?php echo $student['telefon']; ?></td>
+                            <td><?php echo $student['vzdelanie']; ?></td>
+                            <td>
+                              <a href="<?php echo site_url('studenti/view/' . $student['idstudenti']); ?>" class="fa fa-eye"></a>
+                              <a href="<?php echo site_url('studenti/edit/' . $student['idstudenti']); ?>" class="fa fa-edit"></a>
+                              <a href="<?php echo site_url('studenti/delete/' . $student['idstudenti']); ?>" data-href="<?php echo site_url('studenti/delete/' . $student['idstudenti']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
+                            </td>
+                          </tr>
+                        <?php endforeach;
+                    else : ?>
+                        <tr>
+                          <td colspan="4">Žiadny študenti</td>
+                        </tr>
+                      <?php endif; ?>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
             <!-- /.card-body -->
             <!-- Modal -->
             <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">

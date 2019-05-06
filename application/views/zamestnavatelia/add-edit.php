@@ -45,7 +45,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           } ?>
           <div class="form-group">
             <label for="nazov">Názov zamestnávateľa:</label>
-            <input type="text" class="form-control" id="nazov" name="nazov" value="<?php echo !empty($post['nazov']) ? $post['nazov'] : ''; ?>">
+            <input type="text" class="form-control" id="nazov" name="nazov" value="<?php echo !empty($post['nazov']) ? $post['nazov'] : set_value('nazov'); ?>">
           </div>
           <div class="form-group">
             <label for="adresa">Adresa</label>
@@ -53,7 +53,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-map-marker"></i></span>
               </div>
-              <input type="text" class="form-control" id="adresa" name="adresa" value="<?php echo !empty($post['adresa']) ? $post['adresa'] : ''; ?>">
+              <input type="text" class="form-control" id="adresa" name="adresa" value="<?php echo !empty($post['adresa']) ? $post['adresa'] : set_value('adresa'); ?>">
             </div>
           </div>
           <div class="form-group">
@@ -62,7 +62,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-at"></i></span>
               </div>
-              <input type="email" class="form-control" id="email" name="email" value="<?php echo !empty($post['email']) ? $post['email'] : ''; ?>">
+              <input type="email" class="form-control" id="email" name="email" value="<?php echo !empty($post['email']) ? $post['email'] : set_value('email'); ?>">
             </div>
           </div>
           <div class="form-group">
@@ -71,7 +71,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fa fa-phone"></i></span>
               </div>
-              <input type="text" class="form-control" data-inputmask="'mask': '+421 ### ### ###'" name="telefon" id="telefon" value="<?php echo !empty($post['telefon']) ? $post['telefon'] : ''; ?>">
+              <input type="text" class="form-control" data-inputmask="'mask': '+421 999 999 999'" name="telefon" id="telefon" value="<?php echo !empty($post['telefon']) ? $post['telefon'] : set_value('telefon'); ?>">
             </div>
             <!-- /.input group -->
           </div>

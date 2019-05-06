@@ -49,8 +49,8 @@ class Zamestnavatelia extends CI_Controller
 
         $this->form_validation->set_error_delimiters('', '<br>');
 
-        $this->form_validation->set_rules('nazov', 'názov zamestnávateľa', 'required');
-        $this->form_validation->set_rules('adresa', 'adresa zamestnávateľa', 'required');
+        $this->form_validation->set_rules('nazov', 'názov zamestnávateľa', 'trim|required|min_length[3]|max_length[30]');
+        $this->form_validation->set_rules('adresa', 'adresa zamestnávateľa', 'trim|required|min_length[5]|max_length[45]');
         $this->form_validation->set_rules('email', 'email zamestnávateľa', 'required');
         $this->form_validation->set_rules('telefon', 'tel. číslo zamestnávateľa', 'required');
 

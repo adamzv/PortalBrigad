@@ -33,6 +33,14 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" />
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
+
+	<!-- jQuery -->
+	<!-- Presunul som jQuery a morrisJs aby som mohol pouzit morris skript v index.php -->
+	<script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
+
+	<!-- Morris.js charts -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/plugins/morris/morris.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">

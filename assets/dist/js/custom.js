@@ -7,9 +7,8 @@ $(document).ready(function() {
 // DataTables
 $(document).ready(function() {
 	$("#studentiTable").DataTable();
-});
-$(document).ready(function() {
 	$("#zamestnavateliaTable").DataTable();
+	$("#zrucnostiTable").DataTable();
 });
 
 $("#deleteModal").on("show.bs.modal", function(e) {

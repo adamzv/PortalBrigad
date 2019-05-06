@@ -32,7 +32,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 				<div class="card card-primary card-outline">
 					<div class="card-header d-flex p-0">
 						<h3 class="card-title p-3">
-							<i class="fa fa-briefcase mr-1"></i>
+							<i class="fa fa-building mr-1"></i>
 							<?php echo !empty($zamestnavatel['nazov']) ? $zamestnavatel['nazov'] : ''; ?>
 						</h3>
 						<ul class="nav nav-pills ml-auto p-2">

@@ -49,7 +49,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 				</li>
 				<li class="nav-item">
 					<a href="<?php echo site_url('zamestnavatelia/'); ?>" class="nav-link <?php if ($active == 'zamestnavatelia') echo 'active'; ?>">
-						<i class="nav-icon fa fa-briefcase"></i>
+						<i class="nav-icon fa fa-building"></i>
 						<p>
 							Zamestnávatelia
 						</p>
@@ -60,6 +60,30 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 						<i class="nav-icon fa fa-user"></i>
 						<p>
 							Študenti
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('zrucnosti/'); ?>" class="nav-link <?php if ($active == 'zrucnosti') echo 'active'; ?>">
+						<i class="nav-icon fa fa-book"></i>
+						<p>
+							Zručnosti
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('brigady/'); ?>" class="nav-link <?php if ($active == 'brigady') echo 'active'; ?>">
+						<i class="nav-icon fa fa-briefcase"></i>
+						<p>
+							Brigády
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?php echo site_url('kategorie/'); ?>" class="nav-link <?php if ($active == 'kategorie') echo 'active'; ?>">
+						<i class="nav-icon fa fa-folder"></i>
+						<p>
+							Kategórie
 						</p>
 					</a>
 				</li>

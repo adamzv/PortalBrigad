@@ -92,8 +92,32 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <!-- /.card-body -->
               <!-- /.card -->
             </div>
+          </div>
         </section>
         <section class="col-lg-5 connectedSortable ui-sortable">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">Pridať zručnosť</h3>
+            </div>
+            <!-- /.card-header -->
+            <!-- form start -->
+            <?php echo form_open('zrucnosti/add'); ?>
+            <div class="card-body">
+              <?php if (validation_errors()) {
+                echo '<div class="alert alert-danger">' . validation_errors() . '</div>';
+              } ?>
+              <div class="form-group">
+                <label for="zrucnost">Zručnosť:</label>
+                <input type="text" class="form-control" id="zrucnost" name="zrucnost" placeholder="Zručnosť">
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Pridať</button>
+            </div>
+            <?php form_close(); ?>
+          </div>
           <div class="card card-success card-outline">
             <div class="card-header d-flex p-0">
               <h3 class="card-title p-3">
@@ -108,14 +132,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="card-body">
               <div id="graph">
                 <script>
-                  Morris.Bar({
+                  var bar = Morris.Bar({
                     element: 'graph',
+                    resize: true,
                     data: <?php echo $graf; ?>,
                     xkey: 'zrucnost',
                     ykeys: ['pocet'],
                     labels: ['Počet'],
                     barColors: ['#28a745'],
-                    resize: true
+                    hideHover: 'auto',
                   });
                 </script>
               </div>

@@ -33,7 +33,6 @@ class Zrucnosti extends CI_Controller
     $this->form_validation->set_error_delimiters('', '<br>');
 
     $this->form_validation->set_rules('zrucnost', 'zručnosť', 'trim|required|min_length[3]|max_length[25]');
-
     if ($this->form_validation->run() === TRUE) {
       $postData = array(
         'zrucnost' => $this->input->post('zrucnost'),
@@ -43,6 +42,8 @@ class Zrucnosti extends CI_Controller
         $this->session->set_userdata('success_msg', 'Zručnosť bola úspešne vložená');
         redirect('/zrucnosti');
       }
+    } else {
+      return $this->index();
     }
   }
 

@@ -39,11 +39,10 @@ class Zrucnosti extends CI_Controller
       );
       $insert = $this->Zrucnost_model->insert($postData);
       if ($insert) {
-        $this->session->set_userdata('success_msg', 'Zručnosť bola úspešne vložená');
-        redirect('/zrucnosti');
+        echo json_encode(TRUE);
       }
     } else {
-      return $this->index();
+      echo json_encode(FALSE);
     }
   }
 

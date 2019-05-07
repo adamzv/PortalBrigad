@@ -101,22 +101,55 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <?php echo form_open('zrucnosti/add'); ?>
-            <div class="card-body">
-              <?php if (validation_errors()) {
-                echo '<div class="alert alert-danger">' . validation_errors() . '</div>';
-              } ?>
-              <div class="form-group">
-                <label for="zrucnost">Zručnosť:</label>
-                <input type="text" class="form-control" id="zrucnost" name="zrucnost" placeholder="Zručnosť">
+            <form id="form-zrucnosti" method="post">
+              <div class="card-body">
+                <div id="result">
+                  <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                      if (localStorage.getItem('msg')) {
+                        let msg = localStorage.getItem('msg');
+                        let alert = document.createElement('div');
+                        if (msg == "true") {
+                          alert.setAttribute('class', 'alert alert-success');
+                          alert.innerHTML = "Zručnosť bola pridaná.";
+                        } else {
+                          alert.setAttribute('class', 'alert alert-danger');
+                          alert.innerHTML = "The zručnosť field is required.";
+                        }
+                        document.querySelector('#result').appendChild(alert);
+                        localStorage.removeItem('msg');
+                      }
+                    })
+                  </script>
+                </div>
+                <div class="form-group">
+                  <label for="zrucnost">Zručnosť:</label>
+                  <input type="text" class="form-control" id="zrucnost" name="zrucnost" placeholder="Zručnosť">
+                </div>
               </div>
-            </div>
-            <!-- /.card-body -->
+              <!-- /.card-body -->
 
-            <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Pridať</button>
-            </div>
-            <?php form_close(); ?>
+              <div class="card-footer">
+                <button class="btn btn-primary">Pridať</button>
+              </div>
+            </form>
+            <script>
+              document.addEventListener('DOMContentLoaded', () => {
+
+                document.querySelector('#form-zrucnosti').onsubmit = (e) => {
+                  let zrucnost = document.querySelector('#zrucnost').value;
+                  let formdata = new FormData();
+                  formdata.append('zrucnost', zrucnost);
+                  this.axios.post('<?php echo site_url("zrucnosti/add/"); ?>', formdata)
+                    .then(res => {
+                      document.querySelector('#result').innerHTML = res.data;
+                      console.log(res.data);
+                      localStorage.setItem('msg', res.data);
+                      return true;
+                    })
+                }
+              })
+            </script>
           </div>
           <div class="card card-success card-outline">
             <div class="card-header d-flex p-0">

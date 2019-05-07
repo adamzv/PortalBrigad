@@ -46,12 +46,6 @@ class Zrucnosti extends CI_Controller
     }
   }
 
-  // aktualizacia dat
-  public function edit($id)
-  {
-    // TODO
-  }
-
   // odstranenie dat
   public function delete($id)
   {

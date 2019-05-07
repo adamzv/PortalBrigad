@@ -74,7 +74,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                               <td><?php echo $zrucnost['idzrucnosti']; ?></td>
                               <td><?php echo $zrucnost['zrucnost']; ?></td>
                               <td>
-                                <a href="<?php echo site_url('zrucnost/edit/' . $zrucnost['idzrucnosti']); ?>" class="fa fa-edit"></a>
                                 <a href="<?php echo site_url('zrucnost/delete/' . $zrucnost['idzrucnosti']); ?>" data-href="<?php echo site_url('zrucnosti/delete/' . $zrucnost['idzrucnosti']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
                               </td>
                             </tr>

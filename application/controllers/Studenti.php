@@ -31,6 +31,7 @@ class Studenti extends CI_Controller
     //kontrola, ci bolo zaslane id riadka
     if (!empty($id)) {
       $data['student'] = $this->Student_model->getRows($id);
+      $data['zrucnosti'] = $this->Student_model->getZrucnosti($id)->result();
       $data['title'] = $data['student']['meno'] . ' ' . $data['student']['priezvisko'] . ' | PortalBrigad';
       //nahratie detailu zaznamu
       $this->load->view('templates/header', $data);
@@ -58,6 +59,7 @@ class Studenti extends CI_Controller
     $data['post'] = $postData;
     $data['title'] = 'Vytvoriť študenta';
     $data['action'] = 'Pridať';
+    $data['zrucnosti'] = $this->Student_model->getZrucnosti();
 
     if ($this->form_validation->run() === FALSE) {
       $this->load->view('templates/header', $data);

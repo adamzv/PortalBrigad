@@ -54,7 +54,16 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <dd><?php echo !empty($student['telefon']) ? $student['telefon'] : ''; ?></dd>
               <dt>Vzdelanie</dt>
               <dd><?php echo !empty($student['vzdelanie']) ? $student['vzdelanie'] : ''; ?></dd>
+              <dt>Zručnosti</dt>
+              <dd>
+                <?php if (!empty($zrucnosti)) : foreach ($zrucnosti as $zrucnost) : ?>
+                    <span class="badge badge-primary"><?php echo $zrucnost->zrucnost; ?></span>
+                  <?php endforeach;
+              else : ?>
+                  <p>Žiadne zručnosti</p>
+                <?php endif; ?></dd>
             </dl>
+
             <!-- /.card-body -->
           </div>
           <!-- /.card -->

@@ -41,4 +41,36 @@ class Student_model extends CI_Model
     $delete = $this->db->delete('studenti', array('idstudenti' => $id));
     return $delete ? true : false;
   }
+
+  public function getZrucnosti($id = "")
+  {
+    if (!empty($id)) {
+      $this->db->select('zrucnost');
+      $this->db->from('zrucnosti');
+      $this->db->join('studenti_has_zrucnosti', 'studenti_has_zrucnosti.zrucnosti_idzrucnosti = idzrucnosti', 'inner');
+      $this->db->join('studenti', 'studenti_has_zrucnosti.studenti_idstudenti = studenti.idstudenti', 'inner');
+      $this->db->where('studenti.idstudenti = ' . $id);
+      $query = $this->db->get();
+      return $query;
+    } else {
+      $this->load->model('zrucnost_model', 'zrucnosti');
+      return $this->zrucnosti->getRows();
+    }
+  }
+
+  public function insertZrucnosti($id, $zrucnosti)
+  {
+    foreach ($zrucnosti as $zrucnost) {
+      $data[] = array(
+        'studenti_idstudenti' => $id,
+        'zrucnosti_idzrucnosti' => $zrucnost // TODO
+      );
+    }
+    $this->db->insert_batch('studenti_has_zrucnosti', $data);
+    if ($this->db->affected_rows() > 0) {
+      return TRUE;
+    } else {
+      return FALSE;
+    }
+  }
 }

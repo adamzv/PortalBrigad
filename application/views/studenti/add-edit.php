@@ -73,6 +73,15 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <label for="vzdelanie">Vzdelanie:</label>
             <input type="text" class="form-control" id="vzdelanie" name="vzdelanie" value="<?php echo !empty($post['vzdelanie']) ? $post['vzdelanie'] : ''; ?>">
           </div>
+          <div class="form-group">
+            <label>Zručnosti:</label>
+            <select multiple name="zrucnostiStudenta[]" id="zrucnostiStudenta" class="form-control">
+              <?php if (!empty($zrucnosti)) : foreach ($zrucnosti as $zrucnost) : ?>
+                  <option><?php echo $zrucnost['zrucnost']; ?></option>
+                <?php endforeach; ?>
+              <?php endif; ?>
+            </select>
+          </div>
         </div>
         <!-- /.card-body -->
 

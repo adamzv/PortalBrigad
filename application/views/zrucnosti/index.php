@@ -130,24 +130,33 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <button class="btn btn-primary">Pridať</button>
+                <button id="zrucnosti-button" class="btn btn-primary">Pridať</button>
               </div>
             </form>
             <script>
               document.addEventListener('DOMContentLoaded', () => {
 
-                document.querySelector('#form-zrucnosti').onsubmit = (e) => {
+                document.querySelector('#zrucnosti-button').addEventListener('click', (e) => {
                   let zrucnost = document.querySelector('#zrucnost').value;
                   let formdata = new FormData();
                   formdata.append('zrucnost', zrucnost);
-                  this.axios.post('<?php echo site_url("zrucnosti/add/"); ?>', formdata)
+                  this.axios({
+                      method: 'post',
+                      url: '<?php echo site_url("zrucnosti/add/"); ?>',
+                      data: formdata,
+                      config: {
+                        headers: {
+                          'Content-Type': 'multipart/form-data'
+                        }
+                      }
+                    })
                     .then(res => {
                       document.querySelector('#result').innerHTML = res.data;
                       console.log(res.data);
                       localStorage.setItem('msg', res.data);
                       return true;
                     })
-                }
+                });
               })
             </script>
           </div>

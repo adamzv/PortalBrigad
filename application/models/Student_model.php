@@ -63,7 +63,7 @@ class Student_model extends CI_Model
     foreach ($zrucnosti as $zrucnost) {
       $data[] = array(
         'studenti_idstudenti' => $id,
-        'zrucnosti_idzrucnosti' => $zrucnost // TODO
+        'zrucnosti_idzrucnosti' => $zrucnost
       );
     }
     $this->db->insert_batch('studenti_has_zrucnosti', $data);
@@ -71,6 +71,26 @@ class Student_model extends CI_Model
       return TRUE;
     } else {
       return FALSE;
+    }
+  }
+
+  public function updateZrucnosti($id, $update, $zrucnosti)
+  {
+    if ($update) {
+      $this->db->delete('studenti_has_zrucnosti', array('studenti_idstudenti' => $id));
+      $this->db->flush_cache();
+      foreach ($zrucnosti as $zrucnost) {
+        $data[] = array(
+          'studenti_idstudenti' => $id,
+          'zrucnosti_idzrucnosti' => $zrucnost
+        );
+      }
+      $this->db->insert_batch('studenti_has_zrucnosti', $data);
+      if ($this->db->affected_rows() > 0) {
+        return TRUE;
+      } else {
+        return FALSE;
+      }
     }
   }
 }

@@ -74,7 +74,10 @@ class Studenti extends CI_Controller
         'telefon' => $this->input->post('telefon'),
         'vzdelanie' => $this->input->post('vzdelanie')
       );
+      $postZrucnosti = $this->input->post('zrucnostiStudenta');
       $insert = $this->Student_model->insert($postData);
+      $insertZrucnosti = $this->Student_model->insertZrucnosti($insert, $postZrucnosti);
+
       if ($insert) {
         $this->session->set_userdata('success_msg', 'Študent bol úspešne vložený');
         redirect('/studenti');
@@ -102,6 +105,8 @@ class Studenti extends CI_Controller
     $data['post'] = $postData;
     $data['title'] = 'Úprava študenta';
     $data['action'] = 'Editovať';
+    $data['zrucnosti'] = $this->Student_model->getZrucnosti();
+    $data['zrucnosti_st'] = $this->Student_model->getZrucnosti($id)->result();
     //zobrazenie formulara pre vlozenie a editaciu dat
     if ($this->form_validation->run() === FALSE) {
       $this->load->view('templates/header', $data);
@@ -116,7 +121,10 @@ class Studenti extends CI_Controller
         'telefon' => $this->input->post('telefon'),
         'vzdelanie' => $this->input->post('vzdelanie')
       );
+
+      $postZrucnosti = $this->input->post('zrucnostiStudenta');
       $update = $this->Student_model->update($postData, $id);
+      $updateZrucnosti = $this->Student_model->updateZrucnosti($id, $update, $postZrucnosti);
       if ($update) {
         $this->session->set_userdata('success_msg', 'Študent bol aktualizovaný');
         redirect('/studenti');

@@ -75,11 +75,36 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
           <div class="form-group">
             <label>Zručnosti:</label>
+            </select>
             <select multiple name="zrucnostiStudenta[]" id="zrucnostiStudenta" class="form-control">
-              <?php if (!empty($zrucnosti)) : foreach ($zrucnosti as $zrucnost) : ?>
-                  <option><?php echo $zrucnost['zrucnost']; ?></option>
-                <?php endforeach; ?>
-              <?php endif; ?>
+              <?php if ($action == 'Editovať') {
+                if (!empty($zrucnosti)) {
+                  foreach ($zrucnosti as $zrucnost) {
+                    if (!empty($zrucnosti_st)) {
+                      $nasla = false;
+                      // nenapadol ma lepší spôsob ako zobraziť zručnosti, ktoré už má študent zaevidované
+                      foreach ($zrucnosti_st as $zrucnost_st) {
+                        if ($zrucnost['zrucnost'] == $zrucnost_st->zrucnost) {
+                          echo '<option value="' . $zrucnost['idzrucnosti'] . '" selected>' . $zrucnost['zrucnost'] . '</option>';
+                          $nasla = true;
+                          break;
+                        }
+                      }
+                      if (!$nasla) {
+                        echo '<option value="' . $zrucnost['idzrucnosti'] . '">' . $zrucnost['zrucnost']  . '</option>';
+                      }
+                    } else {
+                      echo '<option value="' . $zrucnost['idzrucnosti'] . '">' . $zrucnost["zrucnost"] . '</option>';
+                    }
+                  }
+                }
+              } else {
+                if (!empty($zrucnosti)) {
+                  foreach ($zrucnosti as $zrucnost) {
+                    echo '<option value="' . $zrucnost['idzrucnosti'] . '">' . $zrucnost["zrucnost"] . '</option>';
+                  }
+                }
+              } ?>
             </select>
           </div>
         </div>

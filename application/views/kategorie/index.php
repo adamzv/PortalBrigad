@@ -7,13 +7,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Zručnosti</h1>
+          <h1 class="m-0 text-dark">Kategórie</h1>
         </div>
         <!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>">Domov</a></li>
-            <li class="breadcrumb-item active">Zručnosti</li>
+            <li class="breadcrumb-item active">Kategórie</li>
           </ol>
         </div>
         <!-- /.col -->
@@ -42,39 +42,37 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             <div class="card-header d-flex p-0">
               <h3 class="card-title p-3">
                 <i class="fa fa-book mr-1"></i>
-                Zručnosti
+                Kategórie
               </h3>
-              <!-- zmenit na button -->
               <ul class="nav nav-pills ml-auto p-2">
                 <li class="nav-item">
-                  <!-- zmenit na button -->
-                  <a href="<?php echo site_url('zrucnosti/add/'); ?>" class="nav-link active">Pridať</a>
+                  <a href="<?php echo site_url('kategorie/add/'); ?>" class="nav-link active">Pridať</a>
                 </li>
               </ul>
             </div>
             <!-- /.card-header -->
             <div class="card-body table-responsive p-2">
-              <div id="zrucnostiTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+              <div id="kategorieTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                 <div class="row">
                   <div class="col-sm-12"></div>
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
-                    <table id="zrucnostiTable" class="table table-hover dataTable">
+                    <table id="kategorieTable" class="table table-hover dataTable">
                       <thead>
                         <tr>
                           <th width="20%">ID</th>
-                          <th width="60%">Zručnosť</th>
+                          <th width="60%">Kategória</th>
                           <th width="20%">Akcie</th>
                         </tr>
                       </thead>
                       <tbody id="userData">
-                        <?php if (!empty($zrucnosti)) : foreach ($zrucnosti as $zrucnost) : ?>
+                        <?php if (!empty($kategorie)) : foreach ($kategorie as $kategoria) : ?>
                             <tr>
-                              <td><?php echo $zrucnost['idzrucnosti']; ?></td>
-                              <td><?php echo $zrucnost['zrucnost']; ?></td>
+                              <td><?php echo $kategoria['idkategorie']; ?></td>
+                              <td><?php echo $kategoria['kategoria']; ?></td>
                               <td>
-                                <a href="<?php echo site_url('zrucnost/delete/' . $zrucnost['idzrucnosti']); ?>" data-href="<?php echo site_url('zrucnosti/delete/' . $zrucnost['idzrucnosti']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
+                                <a href="<?php echo site_url('kategoria/delete/' . $kategoria['idkategorie']); ?>" data-href="<?php echo site_url('kategorie/delete/' . $kategoria['idkategorie']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
                               </td>
                             </tr>
                           <?php endforeach;
@@ -96,11 +94,11 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <section class="col-lg-5 connectedSortable ui-sortable">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h3 class="card-title">Pridať zručnosť</h3>
+              <h3 class="card-title">Pridať kategóriu</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form id="form-zrucnosti" method="post">
+            <form id="form-kategorie" method="post">
               <div class="card-body">
                 <div id="result">
                   <script>
@@ -110,10 +108,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                         let alert = document.createElement('div');
                         if (msg == "true") {
                           alert.setAttribute('class', 'alert alert-success');
-                          alert.innerHTML = "Zručnosť bola pridaná.";
+                          alert.innerHTML = "Kategória bola pridaná.";
                         } else {
                           alert.setAttribute('class', 'alert alert-danger');
-                          alert.innerHTML = "The zručnosť field is required.";
+                          alert.innerHTML = "The kategória field is required.";
                         }
                         document.querySelector('#result').appendChild(alert);
                         localStorage.removeItem('msg');
@@ -122,26 +120,26 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                   </script>
                 </div>
                 <div class="form-group">
-                  <label for="zrucnost">Zručnosť:</label>
-                  <input type="text" class="form-control" id="zrucnost" name="zrucnost" placeholder="Zručnosť">
+                  <label for="kategoria">Kategória:</label>
+                  <input type="text" class="form-control" id="kategoria" name="kategoria" placeholder="Kategória">
                 </div>
               </div>
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <button id="zrucnosti-button" class="btn btn-primary">Pridať</button>
+                <button id="kategorie-button" class="btn btn-primary">Pridať</button>
               </div>
             </form>
             <script>
               document.addEventListener('DOMContentLoaded', () => {
 
-                document.querySelector('#zrucnosti-button').addEventListener('click', (e) => {
-                  let zrucnost = document.querySelector('#zrucnost').value;
+                document.querySelector('#kategorie-button').addEventListener('click', (e) => {
+                  let kategoria = document.querySelector('#kategoria').value;
                   let formdata = new FormData();
-                  formdata.append('zrucnost', zrucnost);
+                  formdata.append('kategoria', kategoria);
                   this.axios({
                       method: 'post',
-                      url: '<?php echo site_url("zrucnosti/add/"); ?>',
+                      url: '<?php echo site_url("kategorie/add/"); ?>',
                       data: formdata,
                       config: {
                         headers: {
@@ -163,35 +161,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               })
             </script>
           </div>
-          <div class="card card-success card-outline">
-            <div class="card-header d-flex p-0">
-              <h3 class="card-title p-3">
-                Zručnosti študentov
-              </h3>
-              <div class="card-tools p-1">
-                <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="card-body">
-              <div id="graph">
-                <script>
-                  var bar = Morris.Bar({
-                    element: 'graph',
-                    resize: true,
-                    data: <?php echo $graf; ?>,
-                    xkey: 'zrucnost',
-                    ykeys: ['pocet'],
-                    labels: ['Počet'],
-                    barColors: ['#28a745'],
-                    hideHover: 'auto',
-                  });
-                </script>
-              </div>
-            </div>
-            <!-- /.card-body -->
-          </div>
         </section>
       </div>
     </div>
@@ -207,7 +176,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </button>
           </div>
           <div class="modal-body">
-            Chcete vymazať zručnosť?
+            Chcete vymazať kategóriu?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvoriť</button>

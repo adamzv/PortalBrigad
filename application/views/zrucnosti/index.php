@@ -155,6 +155,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                       localStorage.setItem('msg', res.data);
                       return true;
                     })
+                    .catch(err => {
+                      console.log("Error");
+                      console.log(err);
+                    })
                 });
               })
             </script>

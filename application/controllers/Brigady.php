@@ -56,7 +56,6 @@ class Brigady extends CI_Controller
     $this->form_validation->set_rules('hod_mzda', 'hodinová mzda', 'trim|numeric|required');
     $this->form_validation->set_rules('od', 'dátum nástupu', 'trim|required');
     $this->form_validation->set_rules('aktivna', 'stav ponuky', 'trim|required');
-    // TODO pridať validáciu cudzích kľúčov
 
     $data['post'] = $postData;
     $data['title'] = 'Vytvoriť brigádu';
@@ -74,10 +73,10 @@ class Brigady extends CI_Controller
         'nazov' => $this->input->post('nazov'),
         'popis' => $this->input->post('popis'),
         'hod_mzda' => $this->input->post('hod_mzda'),
-        'od' => $this->input->post('od'),
+        'od' => date('Y-m-d', strtotime($this->input->post('od'))),
         'aktivna' => $this->input->post('aktivna'),
-        'zamestnavatel' => $this->input->post('zamestnavatel'),
-        'kategoria' => $this->input->post('kategoria')
+        'idzamestnavatelia' => $this->input->post('zamestnavatel'),
+        'idkategorie' => $this->input->post('kategoria')
       );
       $insert = $this->Brigada_model->insert($postData);
 
@@ -104,7 +103,6 @@ class Brigady extends CI_Controller
     $this->form_validation->set_rules('hod_mzda', 'hodinová mzda', 'trim|numeric|required');
     $this->form_validation->set_rules('od', 'dátum nástupu', 'trim|required');
     $this->form_validation->set_rules('aktivna', 'stav ponuky', 'trim|required');
-    // TODO pridať validáciu cudzích kľúčov
 
     $data['post'] = $postData;
     $data['title'] = 'Vytvoriť brigádu';
@@ -122,7 +120,7 @@ class Brigady extends CI_Controller
         'nazov' => $this->input->post('nazov'),
         'popis' => $this->input->post('popis'),
         'hod_mzda' => $this->input->post('hod_mzda'),
-        'od' => $this->input->post('od'),
+        'od' => date('Y-m-d', strtotime($this->input->post('od'))),
         'aktivna' => $this->input->post('aktivna'),
         'idzamestnavatelia' => $this->input->post('zamestnavatel'),
         'idkategorie' => $this->input->post('kategoria')

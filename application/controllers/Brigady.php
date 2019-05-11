@@ -51,11 +51,11 @@ class Brigady extends CI_Controller
 
     $this->form_validation->set_error_delimiters('', '<br>');
 
-    $this->form_validation->set_rules('nazov', 'názov ponuky', 'trim|required|min_length[5]|max_length[40]|alpha_numeric_spaces');
+    $this->form_validation->set_rules('nazov', 'názov ponuky', 'trim|required|min_length[5]|max_length[40]|alpha_international');
     $this->form_validation->set_rules('popis', 'popis ponuky', 'trim|required|min_length[10]');
-    $this->form_validation->set_rules('hod_mzda', 'hodinová mzda', 'trim|decimal|required');
+    $this->form_validation->set_rules('hod_mzda', 'hodinová mzda', 'trim|numeric|required');
     $this->form_validation->set_rules('od', 'dátum nástupu', 'trim|required');
-    $this->form_validation->set_rules('aktivna', 'stav ponuky', 'trim|required|alpha');
+    $this->form_validation->set_rules('aktivna', 'stav ponuky', 'trim|required');
     // TODO pridať validáciu cudzích kľúčov
 
     $data['post'] = $postData;
@@ -99,9 +99,9 @@ class Brigady extends CI_Controller
 
     $this->form_validation->set_error_delimiters('', '<br>');
     //nastavenie validacie
-    $this->form_validation->set_rules('nazov', 'názov ponuky', 'trim|required|min_length[5]|max_length[40]|alpha_numeric_spaces');
+    $this->form_validation->set_rules('nazov', 'názov ponuky', 'trim|required|min_length[5]|max_length[40]|alpha_international');
     $this->form_validation->set_rules('popis', 'popis ponuky', 'trim|required|min_length[10]');
-    $this->form_validation->set_rules('hod_mzda', 'hodinová mzda', 'trim|decimal|required');
+    $this->form_validation->set_rules('hod_mzda', 'hodinová mzda', 'trim|numeric|required');
     $this->form_validation->set_rules('od', 'dátum nástupu', 'trim|required');
     $this->form_validation->set_rules('aktivna', 'stav ponuky', 'trim|required');
     // TODO pridať validáciu cudzích kľúčov

@@ -9,6 +9,7 @@ $(document).ready(function() {
 	$("#studentiTable").DataTable();
 	$("#zamestnavateliaTable").DataTable();
 	$("#zrucnostiTable").DataTable();
+	$("#brigadyTable").DataTable();
 });
 
 $("#deleteModal").on("show.bs.modal", function(e) {

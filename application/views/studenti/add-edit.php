@@ -75,7 +75,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           </div>
           <div class="form-group">
             <label>Zručnosti:</label>
-            </select>
             <select multiple name="zrucnostiStudenta[]" id="zrucnostiStudenta" class="form-control">
               <?php if ($action == 'Editovať') {
                 if (!empty($zrucnosti)) {

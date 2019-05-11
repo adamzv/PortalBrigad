@@ -10,6 +10,7 @@ class Studenti extends CI_Controller
     $this->load->helper('url');
     $this->load->library('form_validation');
     $this->load->model('Student_model');
+    $this->load->model('Brigada_student_model');
     $this->load->library('pagination');
   }
   public function index()
@@ -33,6 +34,7 @@ class Studenti extends CI_Controller
       $data['student'] = $this->Student_model->getRows($id);
       $data['zrucnosti'] = $this->Student_model->getZrucnosti($id)->result();
       $data['title'] = $data['student']['meno'] . ' ' . $data['student']['priezvisko'] . ' | PortalBrigad';
+      $data['brigady'] = $this->Brigada_student_model->getBrigadyStudenta($id);
       //nahratie detailu zaznamu
       $this->load->view('templates/header', $data);
       $this->load->view('templates/menu');

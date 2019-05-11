@@ -121,7 +121,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                             <td><?php echo $brigada['doh_hod_mzda'] . '€'; ?></td>
                             <td><?php echo $brigada['provizia'] . '€'; ?></td>
                             <td>
-                              <a href="<?php echo site_url('brigady/view/' . $brigada['idbrigady']); ?>" class="fa fa-eye"></a>
                               <a href="<?php echo site_url('brigady/edit/' . $brigada['idbrigady']); ?>" class="fa fa-edit"></a>
                               <a href="<?php echo site_url('brigady/delete/' . $brigada['idbrigady']); ?>" data-href="<?php echo site_url('brigady/delete/' . $brigada['idbrigady']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
                             </td>

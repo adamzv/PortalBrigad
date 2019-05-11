@@ -11,6 +11,7 @@ $(document).ready(function() {
 	$("#zrucnostiTable").DataTable();
 	$("#brigadyTable").DataTable();
 	$("#brigadyStudentTable").DataTable();
+	$("#brigadyStudentiTable").DataTable();
 });
 
 $("#deleteModal").on("show.bs.modal", function(e) {

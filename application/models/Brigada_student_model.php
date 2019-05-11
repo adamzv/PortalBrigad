@@ -51,4 +51,14 @@ class Brigada_student_model extends CI_Model
       return false;
     }
   }
+
+  public function getBrigadyStudentov()
+  {
+    $this->db->select('CONCAT(studenti.meno, " ", studenti.priezvisko) AS student, id, idbrigady, studenti.idstudenti, nastup, ukoncenie, aktivna, doh_hod_mzda, provizia');
+    $this->db->from('brigady_has_studenti');
+    $this->db->join('studenti', 'studenti.idstudenti = brigady_has_studenti.idstudenti', 'inner');
+    $this->db->group_by('studenti.idstudenti');
+    $query = $this->db->get();
+    return $query->result_array();
+  }
 }

@@ -17,6 +17,7 @@ class Studenti extends CI_Controller
   {
     $data = array();
     $data['studenti'] = $this->Student_model->getRows();
+    $data['brigady'] = $this->Brigada_student_model->getBrigadyStudentov();
     $data['title'] = 'Študenti | PortalBrigad';
 
     $this->load->view('templates/header', $data);

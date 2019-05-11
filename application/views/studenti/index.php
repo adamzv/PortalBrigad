@@ -110,7 +110,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <ul class="nav nav-pills ml-auto p-2">
                 <li class="nav-item">
                   <!-- zmenit na button -->
-                  <a href="<?php echo site_url('studenti/add/'); ?>" class="nav-link active">Pridať</a>
+                  <a href="<?php echo site_url('brigady/addbrigada/'); ?>" class="nav-link active">Pridať</a>
                 </li>
               </ul>
             </div>
@@ -154,7 +154,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                               <td><?php echo $brigada['doh_hod_mzda'] . '€'; ?></td>
                               <td><?php echo $brigada['provizia'] . '€'; ?></td>
                               <td>
-                                <a href="<?php echo site_url('brigady/edit/' . $brigada['idbrigady']); ?>" class="fa fa-edit"></a>
+                                <a href="<?php echo site_url('brigady/editbrigada/' . $brigada['idbrigady']); ?>" class="fa fa-edit"></a>
                                 <a href="<?php echo site_url('brigady/delete/' . $brigada['idbrigady']); ?>" data-href="<?php echo site_url('brigady/delete/' . $brigada['idbrigady']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
                               </td>
                             </tr>

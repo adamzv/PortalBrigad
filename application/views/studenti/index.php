@@ -99,6 +99,80 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               <!-- /.card-body -->
               <!-- /.card -->
             </div>
+          </div>
+          <div class="card card-primary card-outline">
+            <div class="card-header d-flex p-0">
+              <h3 class="card-title p-3">
+                <i class="fa fa-briefcase mr-1"></i>
+                Zoznam brigád študentov
+              </h3>
+              <!-- zmenit na button -->
+              <ul class="nav nav-pills ml-auto p-2">
+                <li class="nav-item">
+                  <!-- zmenit na button -->
+                  <a href="<?php echo site_url('brigady/addbrigada/'); ?>" class="nav-link active">Pridať</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-2">
+              <div id="brigadyStudentiTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                <div class="row">
+                  <div class="col-sm-12"></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <table id="brigadyStudentiTable" class="table table-hover dataTable">
+                      <thead>
+                        <tr>
+                          <!-- TODO šírka -->
+                          <th width="10%">#ID</th>
+                          <th width="19%">Študent</th>
+                          <th width="19%">Brigáda</th>
+                          <th width="19%">Nástup</th>
+                          <th width="19%">Ukončenie</th>
+                          <th width="19%">Aktívna</th>
+                          <th width="12%">Dohodnutá hod. mzda</th>
+                          <th width="19%">Provízia</th>
+                          <th width="10%">Akcie</th>
+                        </tr>
+                      </thead>
+                      <tbody id="userData">
+                        <?php if (!empty($brigady)) : foreach ($brigady as $brigada) : ?>
+                            <tr>
+                              <td><?php echo $brigada['id']; ?></td>
+                              <td><?php echo $brigada['student']; ?></td>
+                              <td><a href="<?php echo site_url('brigady/view/' . $brigada['idbrigady']); ?>">Odkaz [<?php echo $brigada['idbrigady']; ?>]</a></td>
+                              <td><?php echo !empty($brigada['nastup']) ? $brigada['nastup'] : '-'; ?></td>
+                              <td><?php echo !empty($brigada['ukoncenie']) ? $brigada['ukoncenie'] : '-'; ?></td>
+                              <td><?php if ($brigada['aktivna'] == 1) {
+                                    echo 'aktuálna';
+                                  } else {
+                                    echo 'neaktuálna';
+                                  } ?>
+                              </td>
+                              <td><?php echo $brigada['doh_hod_mzda'] . '€'; ?></td>
+                              <td><?php echo $brigada['provizia'] . '€'; ?></td>
+                              <td>
+                                <a href="<?php echo site_url('brigady/editbrigada/' . $brigada['id']); ?>" class="fa fa-edit"></a>
+                                <a href="<?php echo site_url('brigady/deletebrigada/' . $brigada['id']); ?>" data-href="<?php echo site_url('brigady/delete/' . $brigada['idbrigady']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
+                              </td>
+                            </tr>
+                          <?php endforeach;
+                      else : ?>
+                          <tr>
+                            <td colspan="4">Žiadne brigády</td>
+                          </tr>
+                        <?php endif; ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <!-- /.card -->
+            </div>
+          </div>
         </section>
       </div>
     </div>

@@ -10,12 +10,14 @@ class Studenti extends CI_Controller
     $this->load->helper('url');
     $this->load->library('form_validation');
     $this->load->model('Student_model');
+    $this->load->model('Brigada_student_model');
     $this->load->library('pagination');
   }
   public function index()
   {
     $data = array();
     $data['studenti'] = $this->Student_model->getRows();
+    $data['brigady'] = $this->Brigada_student_model->getBrigadyStudentov();
     $data['title'] = 'Študenti | PortalBrigad';
 
     $this->load->view('templates/header', $data);
@@ -33,6 +35,7 @@ class Studenti extends CI_Controller
       $data['student'] = $this->Student_model->getRows($id);
       $data['zrucnosti'] = $this->Student_model->getZrucnosti($id)->result();
       $data['title'] = $data['student']['meno'] . ' ' . $data['student']['priezvisko'] . ' | PortalBrigad';
+      $data['brigady'] = $this->Brigada_student_model->getBrigadyStudenta($id);
       //nahratie detailu zaznamu
       $this->load->view('templates/header', $data);
       $this->load->view('templates/menu');
@@ -50,8 +53,8 @@ class Studenti extends CI_Controller
 
     $this->form_validation->set_error_delimiters('', '<br>');
 
-    $this->form_validation->set_rules('meno', 'meno študenta', 'trim|required|min_length[3]|max_length[20]|alpha');
-    $this->form_validation->set_rules('priezvisko', 'priezvisko študenta', 'trim|required|min_length[2]|max_length[20]|alpha');
+    $this->form_validation->set_rules('meno', 'meno študenta', 'trim|required|min_length[3]|max_length[20]|alpha_international');
+    $this->form_validation->set_rules('priezvisko', 'priezvisko študenta', 'trim|required|min_length[2]|max_length[20]|alpha_international');
     $this->form_validation->set_rules('email', 'email študenta', 'required');
     $this->form_validation->set_rules('telefon', 'tel. číslo študenta', 'required');
     $this->form_validation->set_rules('vzdelanie', 'vzdelanie študenta', 'trim|required|max_length[30]');
@@ -96,8 +99,8 @@ class Studenti extends CI_Controller
 
     $this->form_validation->set_error_delimiters('', '<br>');
     //nastavenie validacie
-    $this->form_validation->set_rules('meno', 'meno študenta', 'trim|required|min_length[3]|max_length[20]|alpha');
-    $this->form_validation->set_rules('priezvisko', 'priezvisko študenta', 'trim|required|min_length[2]|max_length[20]|alpha');
+    $this->form_validation->set_rules('meno', 'meno študenta', 'trim|required|min_length[3]|max_length[20]|alpha_international');
+    $this->form_validation->set_rules('priezvisko', 'priezvisko študenta', 'trim|required|min_length[2]|max_length[20]|alpha_international');
     $this->form_validation->set_rules('email', 'email študenta', 'required');
     $this->form_validation->set_rules('telefon', 'tel. číslo študenta', 'required');
     $this->form_validation->set_rules('vzdelanie', 'vzdelanie študenta', 'trim|required|max_length[30]');

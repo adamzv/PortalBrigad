@@ -155,7 +155,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                               <td><?php echo $brigada['provizia'] . '€'; ?></td>
                               <td>
                                 <a href="<?php echo site_url('brigady/editbrigada/' . $brigada['id']); ?>" class="fa fa-edit"></a>
-                                <a href="<?php echo site_url('brigady/deletebrigada/' . $brigada['id']); ?>" data-href="<?php echo site_url('brigady/delete/' . $brigada['idbrigady']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
+                                <a href="<?php echo site_url('brigady/deletebrigada/' . $brigada['id']); ?>" data-href="<?php echo site_url('brigady/deletebrigada/' . $brigada['id']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>
                               </td>
                             </tr>
                           <?php endforeach;
@@ -187,7 +187,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </button>
           </div>
           <div class="modal-body">
-            Chcete vymazať študenta/brigádu?
+            Chcete vymazať študenta?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvoriť</button>

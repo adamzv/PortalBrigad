@@ -253,6 +253,6 @@ class Brigady extends CI_Controller
         $this->session->set_userdata('error_msg', 'Pri vymazávaní nastala chyba, skúste znova.');
       }
     }
-    redirect('/brigady');
+    redirect('/studenti');
   }
 }

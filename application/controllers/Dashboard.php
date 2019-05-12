@@ -22,6 +22,8 @@ class Dashboard extends CI_Controller
     //$data['brigady'] = $this->Brigada_model->getRows();
     $data['title'] = 'Dashboard | PortalBrigad';
     $data['pocet_studentov'] = $this->Student_model->getPocetStudentov();
+    $data['pocet_zamestnavatelov'] = $this->Zamestnavatel_model->getPocetZamestnavatelov();
+    $data['pocet_ponuk'] = $this->Brigada_model->getPocetBrigad();
 
     $this->load->view('templates/header', $data);
     $this->load->view('templates/menu');

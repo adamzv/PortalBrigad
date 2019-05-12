@@ -10,6 +10,8 @@ $(document).ready(function() {
 	$("#zamestnavateliaTable").DataTable();
 	$("#zrucnostiTable").DataTable();
 	$("#brigadyTable").DataTable();
+	$("#brigadyStudentTable").DataTable();
+	$("#brigadyStudentiTable").DataTable();
 });
 
 $("#deleteModal").on("show.bs.modal", function(e) {

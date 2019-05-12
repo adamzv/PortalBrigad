@@ -43,4 +43,21 @@ class Kategoria_model extends CI_Model
     $delete = $this->db->delete('kategorie', array('idkategorie' => $id));
     return $delete ? true : false;
   }
+
+  public function getPocetKategoriiZaRok($rok)
+  {
+    $this->db->select('MONTH(od) mesiac, count(*) pocet');
+    $this->db->from('kategorie');
+    $this->db->join('brigady', 'brigady.idkategorie = kategorie.idkategorie', 'inner');
+    $this->db->where('YEAR(od) = ' . $rok);
+    $this->db->group_by('mesiac, brigady.idkategorie');
+    $query = $this->db->get();
+    return $query;
+  }
 }
+
+/*
+SELECT MONTH(od) mesiac, kategorie.kategoria, COUNT(*) FROM brigady
+ INNER JOIN kategorie ON kategorie.idkategorie = brigady.idkategorie 
+ WHERE YEAR(brigady.od) = 2019 GROUP BY mesiac, brigady.idkategorie
+*/

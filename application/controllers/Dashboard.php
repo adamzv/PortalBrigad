@@ -12,6 +12,7 @@ class Dashboard extends CI_Controller
     $this->load->model('Brigada_model');
     $this->load->model('Brigada_student_model');
     $this->load->model('Zamestnavatel_model');
+    $this->load->model('Kategoria_model');
     $this->load->model('Student_model');
     $this->load->library('pagination');
   }
@@ -24,6 +25,7 @@ class Dashboard extends CI_Controller
     $data['pocet_studentov'] = $this->Student_model->getPocetStudentov();
     $data['pocet_zamestnavatelov'] = $this->Zamestnavatel_model->getPocetZamestnavatelov();
     $data['pocet_ponuk'] = $this->Brigada_model->getPocetBrigad();
+    $data['graf_kategorie'] = json_encode($this->Kategoria_model->getPocetKategoriiZaRok(date('Y'))->result());
 
     $this->load->view('templates/header', $data);
     $this->load->view('templates/menu');

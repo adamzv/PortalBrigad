@@ -40,7 +40,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 				<!-- Add icons to the links using the .nav-icon class
 							 with font-awesome or any other icon font library -->
 				<li class="nav-item">
-					<a href="<?php echo base_url(); ?>" class="nav-link <?php if ($active == '/') echo 'active'; ?>">
+					<a href="<?php echo site_url('/') ?>" class="nav-link <?php if ($active == '') echo 'active'; ?>">
 						<i class=" nav-icon fa fa-dashboard"></i>
 						<p>
 							Dashboard

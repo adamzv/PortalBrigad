@@ -72,6 +72,42 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         </div>
         <!-- /.col -->
       </div>
+      <div class="row">
+        <section class="col-lg-7 connectedSortable ui-sortable">
+          <div class="card card-success card-outline">
+            <div class="card-header d-flex p-0">
+              <h3 class="card-title p-3">
+                Počet brigád za mesiac v roku 2019
+              </h3>
+            </div>
+            <div class="card-body">
+              <div id="graph">
+
+                <script>
+                  var mesiace = ["Január", "Február", "Marec", "Apríl", "Máj", "Jún", "Júl", "August", "September", "Október", "November", "December"];
+
+                  var bar = Morris.Area({
+                    element: 'graph',
+                    resize: true,
+                    data: <?php echo $graf_kategorie; ?>,
+                    xkey: 'mesiac',
+                    ykeys: ['pocet'],
+                    labels: ['Počet'],
+                    barColors: ['#28a745'],
+                    parseTime: false,
+                    hideHover: 'auto',
+                    xLabelFormat: function(x) {
+                      var index = parseInt(x.src.mesiac);
+                      return mesiace[index - 1];
+                    },
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </section>
+      </div>
       <!-- /.container-fluid -->
   </section>
   <!-- /.content -->

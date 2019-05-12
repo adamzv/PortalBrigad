@@ -93,4 +93,12 @@ class Student_model extends CI_Model
       }
     }
   }
+
+  public function getPocetStudentov()
+  {
+    $this->db->select('COUNT(*) as pocet');
+    $this->db->from('studenti');
+    $query = $this->db->get();
+    return $query->row_array();
+  }
 }

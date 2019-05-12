@@ -187,7 +187,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </button>
           </div>
           <div class="modal-body">
-            Chcete vymazať študenta?
+            Chcete vymazať študenta/brigádu?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvoriť</button>

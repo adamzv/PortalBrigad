@@ -47,10 +47,9 @@ class Kategoria_model extends CI_Model
   public function getPocetKategoriiZaRok($rok)
   {
     $this->db->select('MONTH(od) mesiac, count(*) pocet');
-    $this->db->from('kategorie');
-    $this->db->join('brigady', 'brigady.idkategorie = kategorie.idkategorie', 'inner');
+    $this->db->from('brigady');
     $this->db->where('YEAR(od) = ' . $rok);
-    $this->db->group_by('mesiac, brigady.idkategorie');
+    $this->db->group_by('mesiac');
     $query = $this->db->get();
     return $query;
   }

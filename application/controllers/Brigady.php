@@ -200,7 +200,7 @@ class Brigady extends CI_Controller
   {
     $data = array();
     //ziskanie dat z tabulky
-    $postData = $this->Brigada_model->getRows($id);
+    $postData = $this->Brigada_student_model->getRows($id);
 
     $this->form_validation->set_error_delimiters('', '<br>');
     //nastavenie validacie
@@ -211,7 +211,7 @@ class Brigady extends CI_Controller
     $this->form_validation->set_rules('aktivna', 'stav ponuky', 'trim|required');
 
     $data['post'] = $postData;
-    $data['title'] = 'Vytvoriť brigádu';
+    $data['title'] = 'Editovať brigádu [' . $id . ']';
     $data['action'] = 'Editovať';
     $data['studenti'] = $this->Student_model->getRows();
     $data['brigady'] = $this->Brigada_model->getRows();
@@ -239,5 +239,20 @@ class Brigady extends CI_Controller
         $data['error_msg'] = 'Máme problém.';
       }
     }
+  }
+
+  public function deletebrigada($id)
+  {
+    //overenie, ci id nie je prazdne
+    if ($id) {
+      //odstranenie zaznamu
+      $delete = $this->Brigada_student_model->delete($id);
+      if ($delete) {
+        $this->session->set_userdata('success_msg', 'Brigáda bola vymazaná.');
+      } else {
+        $this->session->set_userdata('error_msg', 'Pri vymazávaní nastala chyba, skúste znova.');
+      }
+    }
+    redirect('/brigady');
   }
 }

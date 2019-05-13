@@ -67,8 +67,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           <div class="form-group">
             <label for="vzdelanie">Aktívna:</label>
             <select name="aktivna" id="aktivna" class="form-control">
-              <option value="1" <?php echo $post['aktivna'] == 1 ? 'selected' : ''; ?>>aktuálna</option>
-              <option value="0" <?php echo $post['aktivna'] == 0 ? 'selected' : ''; ?>>neaktuálna</option>
+              <option value="1" <?php echo !empty($post['aktivna']) && $post['aktivna'] == 1 ? 'selected' : ''; ?>>aktuálna</option>
+              <option value="0" <?php echo !empty($post['aktivna']) && $post['aktivna'] == 0 ? 'selected' : ''; ?>>neaktuálna</option>
             </select>
           </div>
           <div class="form-group">

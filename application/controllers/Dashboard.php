@@ -26,6 +26,8 @@ class Dashboard extends CI_Controller
     $data['pocet_zamestnavatelov'] = $this->Zamestnavatel_model->getPocetZamestnavatelov();
     $data['pocet_ponuk'] = $this->Brigada_model->getPocetBrigad();
     $data['graf_kategorie'] = json_encode($this->Kategoria_model->getPocetKategoriiZaRok(date('Y'))->result());
+    $data['graf_priemer'] = json_encode($this->Kategoria_model->getPriemernuMzduPreKategoriu()->result());
+    $data['graf_pocet'] = json_encode($this->Kategoria_model->getPocetBrigadvKategoriach()->result());
 
     $this->load->view('templates/header', $data);
     $this->load->view('templates/menu');

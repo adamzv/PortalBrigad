@@ -53,10 +53,24 @@ class Kategoria_model extends CI_Model
     $query = $this->db->get();
     return $query;
   }
-}
 
-/*
-SELECT MONTH(od) mesiac, kategorie.kategoria, COUNT(*) FROM brigady
- INNER JOIN kategorie ON kategorie.idkategorie = brigady.idkategorie 
- WHERE YEAR(brigady.od) = 2019 GROUP BY mesiac, brigady.idkategorie
-*/
+  public function getPriemernuMzduPreKategoriu()
+  {
+    $this->db->select('kategoria, AVG(hod_mzda) priemer');
+    $this->db->from('kategorie');
+    $this->db->join('brigady', 'brigady.idkategorie = kategorie.idkategorie', 'inner');
+    $this->db->group_by('kategoria');
+    $query = $this->db->get();
+    return $query;
+  }
+
+  public function getPocetBrigadvKategoriach()
+  {
+    $this->db->select('kategoria label, COUNT(*) value');
+    $this->db->from('kategorie');
+    $this->db->join('brigady', 'brigady.idkategorie = kategorie.idkategorie', 'inner');
+    $this->db->group_by('kategoria');
+    $query = $this->db->get();
+    return $query;
+  }
+}

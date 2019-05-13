@@ -93,7 +93,65 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     xkey: 'mesiac',
                     ykeys: ['pocet'],
                     labels: ['Počet'],
-                    barColors: ['#28a745'],
+                    lineColors: ['#28a745'],
+                    parseTime: false,
+                    hideHover: 'auto',
+                    xLabelFormat: function(x) {
+                      var index = parseInt(x.src.mesiac);
+                      return mesiace[index - 1];
+                    },
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <div class="card card-info card-outline">
+            <div class="card-header d-flex p-0">
+              <h3 class="card-title p-3">
+                Priemerná hodinová mzda za kategóriu
+              </h3>
+            </div>
+            <div class="card-body">
+              <div id="priemerGraph">
+
+                <script>
+                  var bar = Morris.Bar({
+                    element: 'priemerGraph',
+                    resize: true,
+                    data: <?php echo $graf_priemer; ?>,
+                    xkey: 'kategoria',
+                    ykeys: ['priemer'],
+                    labels: ['Počet'],
+                    barColors: ['#1a9fb5'],
+                    parseTime: false,
+                    hideHover: 'auto'
+                  });
+                </script>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </section>
+        <section class="col-lg-5 connectedSortable ui-sortable">
+          <div class="card card-warning card-outline">
+            <div class="card-header d-flex p-0">
+              <h3 class="card-title p-3">
+                Počet brigád v kategóriách
+              </h3>
+            </div>
+            <div class="card-body">
+              <div id="pocetGraph">
+
+                <script>
+                  var bar = Morris.Donut({
+                    element: 'pocetGraph',
+                    resize: true,
+                    data: <?php echo $graf_pocet; ?>,
+                    xkey: 'mesiac',
+                    ykeys: ['pocet'],
+                    labels: ['Počet'],
+                    colors: ['#fcbf15'],
                     parseTime: false,
                     hideHover: 'auto',
                     xLabelFormat: function(x) {

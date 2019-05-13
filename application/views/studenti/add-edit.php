@@ -35,9 +35,9 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <!-- form start -->
 
         <?php if ($action == 'Editovať') {
-          echo form_open('studenti/edit/' . $post['idstudenti']);
+          echo form_open_multipart('studenti/edit/' . $post['idstudenti']);
         } else {
-          echo form_open('studenti/add/');
+          echo form_open_multipart('studenti/add/');
         } ?>
         <div class="card-body">
           <?php if (validation_errors()) {
@@ -105,6 +105,10 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                 }
               } ?>
             </select>
+          </div>
+          <div class="form-group">
+            <label for="vzdelanie">Životopis:</label>
+            <input type="file" class="form-control" id="zivotopis" name="zivotopis" size="20" />
           </div>
         </div>
         <!-- /.card-body -->

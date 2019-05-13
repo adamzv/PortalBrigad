@@ -77,6 +77,17 @@ class Studenti extends CI_Controller
         'telefon' => $this->input->post('telefon'),
         'vzdelanie' => $this->input->post('vzdelanie')
       );
+      $config['upload_path']          = './assets/uploads/';
+      $config['allowed_types']        = 'pdf';
+      $config['max_size']             = 10000;
+      $this->load->library('upload', $config);
+
+      if (!$this->upload->do_upload('zivotopis')) {
+        $data['error_msg'] = 'Máme problém';
+      } else {
+        $postData['zivotopis'] = $this->upload->data()['file_name'];
+      }
+
       $postZrucnosti = $this->input->post('zrucnostiStudenta');
       $insert = $this->Student_model->insert($postData);
       $insertZrucnosti = $this->Student_model->insertZrucnosti($insert, $postZrucnosti);
@@ -124,6 +135,17 @@ class Studenti extends CI_Controller
         'telefon' => $this->input->post('telefon'),
         'vzdelanie' => $this->input->post('vzdelanie')
       );
+
+      $config['upload_path']          = './assets/uploads/';
+      $config['allowed_types']        = 'pdf';
+      $config['max_size']             = 10000;
+      $this->load->library('upload', $config);
+
+      if (!$this->upload->do_upload('zivotopis')) {
+        $data['error_msg'] = 'Máme problém';
+      } else {
+        $postData['zivotopis'] = $this->upload->data()['file_name'];
+      }
 
       $postZrucnosti = $this->input->post('zrucnostiStudenta');
       $update = $this->Student_model->update($postData, $id);

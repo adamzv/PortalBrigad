@@ -35,7 +35,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
         <!-- form start -->
 
         <?php if ($action == 'Editovať') {
-          echo form_open('brigady/editbrigada/' . $post['idbrigady']);
+          echo form_open('brigady/editbrigada/' . $post['id']);
         } else {
           echo form_open('brigady/addbrigada/');
         } ?>

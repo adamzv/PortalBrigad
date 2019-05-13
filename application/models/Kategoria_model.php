@@ -43,4 +43,34 @@ class Kategoria_model extends CI_Model
     $delete = $this->db->delete('kategorie', array('idkategorie' => $id));
     return $delete ? true : false;
   }
+
+  public function getPocetKategoriiZaRok($rok)
+  {
+    $this->db->select('MONTH(od) mesiac, count(*) pocet');
+    $this->db->from('brigady');
+    $this->db->where('YEAR(od) = ' . $rok);
+    $this->db->group_by('mesiac');
+    $query = $this->db->get();
+    return $query;
+  }
+
+  public function getPriemernuMzduPreKategoriu()
+  {
+    $this->db->select('kategoria, AVG(hod_mzda) priemer');
+    $this->db->from('kategorie');
+    $this->db->join('brigady', 'brigady.idkategorie = kategorie.idkategorie', 'inner');
+    $this->db->group_by('kategoria');
+    $query = $this->db->get();
+    return $query;
+  }
+
+  public function getPocetBrigadvKategoriach()
+  {
+    $this->db->select('kategoria label, COUNT(*) value');
+    $this->db->from('kategorie');
+    $this->db->join('brigady', 'brigady.idkategorie = kategorie.idkategorie', 'inner');
+    $this->db->group_by('kategoria');
+    $query = $this->db->get();
+    return $query;
+  }
 }

@@ -10,6 +10,7 @@ class Brigady extends CI_Controller
     $this->load->helper('url');
     $this->load->library('form_validation');
     $this->load->model('Brigada_model');
+    $this->load->model('Kategoria_model');
     $this->load->model('Brigada_student_model');
     $this->load->model('Zamestnavatel_model');
     $this->load->model('Student_model');
@@ -62,6 +63,7 @@ class Brigady extends CI_Controller
     $data['title'] = 'Vytvoriť brigádu';
     $data['action'] = 'Pridať';
     $data['zamestnavatelia'] = $this->Zamestnavatel_model->getRows();
+    $data['kategorie'] = $this->Kategoria_model->getRows();
 
     if ($this->form_validation->run() === FALSE) {
       $this->load->view('templates/header', $data);
@@ -253,6 +255,6 @@ class Brigady extends CI_Controller
         $this->session->set_userdata('error_msg', 'Pri vymazávaní nastala chyba, skúste znova.');
       }
     }
-    redirect('/brigady');
+    redirect('/studenti');
   }
 }

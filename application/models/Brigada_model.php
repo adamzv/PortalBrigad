@@ -47,4 +47,12 @@ class Brigada_model extends CI_Model
     $delete = $this->db->delete('brigady', array('idbrigady' => $id));
     return $delete ? true : false;
   }
+
+  public function getPocetBrigad()
+  {
+    $this->db->select('COUNT(*) as pocet');
+    $this->db->from('brigady');
+    $query = $this->db->get();
+    return $query->row_array();
+  }
 }

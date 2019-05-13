@@ -41,4 +41,12 @@ class Zamestnavatel_model extends CI_Model
         $delete = $this->db->delete('zamestnavatelia', array('id' => $id));
         return $delete ? true : false;
     }
+
+    public function getPocetZamestnavatelov()
+    {
+        $this->db->select('COUNT(*) as pocet');
+        $this->db->from('zamestnavatelia');
+        $query = $this->db->get();
+        return $query->row_array();
+    }
 }

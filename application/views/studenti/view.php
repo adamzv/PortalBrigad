@@ -62,6 +62,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
               else : ?>
                   <p>Žiadne zručnosti</p>
                 <?php endif; ?></dd>
+              <dt>Životopis</dt>
+              <dd><?php echo !empty($student['zivotopis']) ? '<i class="fa fa-file mr-1"></i><a href="?file=' . $student['zivotopis'] . '">' . $student['zivotopis'] . '</a>' : '<i class="fa fa-file-pdf"></i>Žiadny životopis'; ?></dd>
             </dl>
             <!-- /.card-body -->
           </div>

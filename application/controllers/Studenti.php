@@ -29,6 +29,16 @@ class Studenti extends CI_Controller
   // Zobrazenie detailu o triede
   public function view($id)
   {
+    if (isset($_GET['file'])) {
+      $file = $_GET['file'];
+      $filePath = dirname(__FILE__, 3) . '/assets/uploads/';
+      if (file_exists($filePath . $file) && is_readable($filePath . $file) && preg_match('/\.pdf$/', $filePath . $file)) {
+        header('Content-Type: application/pdf');
+        header("Content-Disposition: attachment; filename=\"$file\"");
+        readfile($filePath . $file);
+      }
+    }
+
     $data = array();
     //kontrola, ci bolo zaslane id riadka
     if (!empty($id)) {

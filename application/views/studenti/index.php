@@ -68,6 +68,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                           <th width="19%">Email</th>
                           <th width="19%">Telefón</th>
                           <th width="19%">Vzdelanie</th>
+                          <th width="19%">Životopis</th>
                           <th width="10%">Akcie</th>
                         </tr>
                       </thead>
@@ -79,6 +80,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                               <td><?php echo $student['email']; ?></td>
                               <td><?php echo $student['telefon']; ?></td>
                               <td><?php echo $student['vzdelanie']; ?></td>
+                              <td><?php echo !empty($student['zivotopis']) ? '<i class="fa fa-check mr-1"></i>' : '<i class="fa fa-times mr-1"></i>'; ?></td>
                               <td>
                                 <a href="<?php echo site_url('studenti/view/' . $student['idstudenti']); ?>" class="fa fa-eye"></a>
                                 <a href="<?php echo site_url('studenti/edit/' . $student['idstudenti']); ?>" class="fa fa-edit"></a>

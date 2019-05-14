@@ -14,8 +14,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
 	<!-- Theme style -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/adminlte.min.css" />
-	<!-- iCheck -->
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/iCheck/flat/blue.css" />
 	<!-- Morris chart -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/morris/morris.css" />
 	<!-- DataTables -->

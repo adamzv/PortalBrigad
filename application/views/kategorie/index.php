@@ -78,7 +78,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                           <?php endforeach;
                       else : ?>
                           <tr>
-                            <td colspan="4">Žiadne zručnosti</td>
+                            <td colspan="4">Žiadne kategórie</td>
                           </tr>
                         <?php endif; ?>
                       </tbody>

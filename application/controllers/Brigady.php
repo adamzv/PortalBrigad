@@ -160,11 +160,11 @@ class Brigady extends CI_Controller
 
     $this->form_validation->set_error_delimiters('', '<br>');
 
-    $this->form_validation->set_rules('nastup', 'názov ponuky', 'trim|required');
-    $this->form_validation->set_rules('ukoncenie', 'popis ponuky', 'trim|required');
-    $this->form_validation->set_rules('doh_hod_mzda', 'hodinová mzda', 'trim|numeric|required');
-    $this->form_validation->set_rules('provizia', 'dátum nástupu', 'trim|required|numeric');
-    $this->form_validation->set_rules('aktivna', 'stav ponuky', 'trim|required');
+    $this->form_validation->set_rules('nastup', 'nástup', 'trim|required');
+    $this->form_validation->set_rules('ukoncenie', 'ukončenie', 'trim|required');
+    $this->form_validation->set_rules('doh_hod_mzda', 'dohodnutá hodinová mzda', 'trim|numeric|required');
+    $this->form_validation->set_rules('provizia', 'provízia', 'trim|required|numeric');
+    $this->form_validation->set_rules('aktivna', 'aktívna', 'trim|required');
 
     $data['post'] = $postData;
     $data['title'] = 'Vytvoriť brigádu';
@@ -206,11 +206,11 @@ class Brigady extends CI_Controller
 
     $this->form_validation->set_error_delimiters('', '<br>');
     //nastavenie validacie
-    $this->form_validation->set_rules('nastup', 'názov ponuky', 'trim');
-    $this->form_validation->set_rules('ukoncenie', 'popis ponuky', 'trim');
-    $this->form_validation->set_rules('doh_hod_mzda', 'hodinová mzda', 'trim|numeric|required');
-    $this->form_validation->set_rules('provizia', 'dátum nástupu', 'trim|required|numeric');
-    $this->form_validation->set_rules('aktivna', 'stav ponuky', 'trim|required');
+    $this->form_validation->set_rules('nastup', 'nástup', 'trim|required');
+    $this->form_validation->set_rules('ukoncenie', 'ukončenie', 'trim|required');
+    $this->form_validation->set_rules('doh_hod_mzda', 'dohodnutá hodinová mzda', 'trim|numeric|required');
+    $this->form_validation->set_rules('provizia', 'provízia', 'trim|required|numeric');
+    $this->form_validation->set_rules('aktivna', 'aktívna', 'trim|required');
 
     $data['post'] = $postData;
     $data['title'] = 'Editovať brigádu [' . $id . ']';

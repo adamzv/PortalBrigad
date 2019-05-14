@@ -66,7 +66,7 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
             </select>
           </div>
           <div class="form-group">
-            <label for="popis">Študent:</label>
+            <label for="student">Študent:</label>
             <select name="student" id="student" class="form-control">
               <?php if ($action == 'Editovať') {
                 if (!empty($post['idstudenti'])) {
@@ -116,8 +116,8 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
           <div class="form-group">
             <label for="vzdelanie">Aktívna:</label>
             <select name="aktivna" id="aktivna" class="form-control">
-              <option value="1" <?php echo $post['aktivna'] == 1 ? 'selected' : ''; ?>>aktuálna</option>
-              <option value="0" <?php echo $post['aktivna'] == 0 ? 'selected' : ''; ?>>neaktuálna</option>
+              <option value="1" <?php echo !empty($post['aktivna']) && $post['aktivna'] == 1 ? 'selected' : ''; ?>>aktuálna</option>
+              <option value="0" <?php echo !empty($post['aktivna']) && $post['aktivna'] == 0 ? 'selected' : ''; ?>>neaktuálna</option>
             </select>
           </div>
         </div>

@@ -61,7 +61,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <table id="kategorieTable" class="table table-hover dataTable">
                       <thead>
                         <tr>
-                          <th width="20%">ID</th>
                           <th width="60%">Kategória</th>
                           <th width="20%">Akcie</th>
                         </tr>
@@ -69,7 +68,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                       <tbody id="userData">
                         <?php if (!empty($kategorie)) : foreach ($kategorie as $kategoria) : ?>
                             <tr>
-                              <td><?php echo $kategoria['idkategorie']; ?></td>
                               <td><?php echo $kategoria['kategoria']; ?></td>
                               <td>
                                 <a href="<?php echo site_url('kategoria/delete/' . $kategoria['idkategorie']); ?>" data-href="<?php echo site_url('kategorie/delete/' . $kategoria['idkategorie']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>

@@ -12,6 +12,7 @@ $(document).ready(function() {
 	$("#brigadyTable").DataTable();
 	$("#brigadyStudentTable").DataTable();
 	$("#brigadyStudentiTable").DataTable();
+	$("#kategorieTable").DataTable();
 });
 
 $("#deleteModal").on("show.bs.modal", function(e) {

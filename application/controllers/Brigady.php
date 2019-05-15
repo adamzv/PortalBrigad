@@ -161,10 +161,10 @@ class Brigady extends CI_Controller
     $this->form_validation->set_error_delimiters('', '<br>');
 
     $this->form_validation->set_rules('nastup', 'nástup', 'trim|required');
-    $this->form_validation->set_rules('ukoncenie', 'ukončenie', 'trim|required');
+    $this->form_validation->set_rules('ukoncenie', 'ukončenie', 'trim');
     $this->form_validation->set_rules('doh_hod_mzda', 'dohodnutá hodinová mzda', 'trim|numeric|required');
     $this->form_validation->set_rules('provizia', 'provízia', 'trim|required|numeric');
-    $this->form_validation->set_rules('aktivna', 'aktívna', 'trim|required');
+    $this->form_validation->set_rules('aktivna', 'aktívna', 'trim');
 
     $data['post'] = $postData;
     $data['title'] = 'Vytvoriť brigádu';
@@ -181,8 +181,8 @@ class Brigady extends CI_Controller
       $postData = array(
         'idbrigady' => $this->input->post('brigada'),
         'idstudenti' => $this->input->post('student'),
-        'nastup' => date('Y-m-d', strtotime($this->input->post('nastup'))),
-        'ukoncenie' => date('Y-m-d', strtotime($this->input->post('ukoncenie'))),
+        'nastup' => empty($this->input->post('nastup')) ? NULL : date('Y-m-d', strtotime($this->input->post('nastup'))),
+        'ukoncenie' => empty($this->input->post('ukoncenie')) ? NULL : date('Y-m-d', strtotime($this->input->post('ukoncenie'))),
         'aktivna' => $this->input->post('aktivna'),
         'doh_hod_mzda' => $this->input->post('doh_hod_mzda'),
         'provizia' => $this->input->post('provizia')
@@ -236,7 +236,7 @@ class Brigady extends CI_Controller
       $update = $this->Brigada_student_model->update($postData, $id);
       if ($update) {
         $this->session->set_userdata('success_msg', 'Bridáda bola aktualizovaná');
-        redirect('/brigady');
+        redirect('/studenti');
       } else {
         $data['error_msg'] = 'Máme problém.';
       }

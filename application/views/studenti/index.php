@@ -127,8 +127,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <table id="brigadyStudentiTable" class="table table-hover dataTable">
                       <thead>
                         <tr>
-                          <!-- TODO šírka -->
-                          <th width="10%">#ID</th>
                           <th width="19%">Študent</th>
                           <th width="19%">Brigáda</th>
                           <th width="19%">Nástup</th>
@@ -142,7 +140,6 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                       <tbody id="userData">
                         <?php if (!empty($brigady)) : foreach ($brigady as $brigada) : ?>
                             <tr>
-                              <td><?php echo $brigada['id']; ?></td>
                               <td><?php echo $brigada['student']; ?></td>
                               <td><a href="<?php echo site_url('brigady/view/' . $brigada['idbrigady']); ?>">Odkaz [<?php echo $brigada['idbrigady']; ?>]</a></td>
                               <td><?php echo !empty($brigada['nastup']) ? $brigada['nastup'] : '-'; ?></td>

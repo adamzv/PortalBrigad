@@ -63,15 +63,13 @@ defined('BASEPATH') or exit('No direct script access allowed'); ?>
                     <table id="zrucnostiTable" class="table table-hover dataTable">
                       <thead>
                         <tr>
-                          <th width="20%">ID</th>
-                          <th width="60%">Zručnosť</th>
+                          <th width="80%">Zručnosť</th>
                           <th width="20%">Akcie</th>
                         </tr>
                       </thead>
                       <tbody id="userData">
                         <?php if (!empty($zrucnosti)) : foreach ($zrucnosti as $zrucnost) : ?>
                             <tr>
-                              <td><?php echo $zrucnost['idzrucnosti']; ?></td>
                               <td><?php echo $zrucnost['zrucnost']; ?></td>
                               <td>
                                 <a href="<?php echo site_url('zrucnost/delete/' . $zrucnost['idzrucnosti']); ?>" data-href="<?php echo site_url('zrucnosti/delete/' . $zrucnost['idzrucnosti']); ?>" class="fa fa-trash" data-toggle="modal" data-target="#deleteModal"></a>

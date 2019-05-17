@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: St 15.Máj 2019, 17:40
+-- Čas generovania: Pi 17.Máj 2019, 15:20
 -- Verzia serveru: 10.1.28-MariaDB
 -- Verzia PHP: 7.1.11
 
@@ -44,7 +44,6 @@ CREATE TABLE `brigady` (
 --
 
 INSERT INTO `brigady` (`idbrigady`, `nazov`, `popis`, `hod_mzda`, `od`, `aktivna`, `idzamestnavatelia`, `idkategorie`) VALUES
-(9, '.NET programátor', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis risus dictum, auctor dui in, gravida elit. Sed non luctus leo, vel maximus eros. Nunc luctus tristique quam id lobortis. Nullam in ante sit amet lacus pharetra tincidunt eget aliquam metus. Nunc dapibus lorem lacinia neque sollicitudin, sit amet porta diam tincidunt. Pellentesque lobortis feugiat massa et efficitur. Donec tincidunt eget metus euismod ullamcorper. Nunc ante nibh, auctor in orci vel, laoreet viverra dolor. Vivamus magna massa, feugiat in lorem sit amet, lobortis vulputate dolor. Morbi facilisis viverra turpis ut consectetur. Morbi fermentum diam eu metus rutrum, in ultricies est aliquam. Integer tincidunt urna diam. Sed commodo, urna in feugiat tincidunt, justo dolor pulvinar libero, ut ultricies nisl lorem vitae erat. Cras posuere, ex a semper faucibus, urna quam vulputate nisi, et convallis mauris lacus malesuada turpis. Integer bibendum mattis elit rhoncus iaculis.', 4.8, '2019-02-12', 0, 16, 6),
 (10, 'Java programátor', '<b>Sed lorem erat</b>, finibus at pretium quis, tempor nec ipsum. Nam hendrerit tellus eu augue dapibus, ac rutrum leo pharetra. Donec scelerisque sit amet eros eget gravida. Maecenas vestibulum ipsum a elit sodales consectetur. Morbi vitae accumsan nisi. Mauris gravida mattis metus, sit amet imperdiet metus suscipit non. Donec nec leo lobortis, rutrum sapien nec, condimentum dui. Nam et erat ligula. Suspendisse bibendum eleifend sapien, eu porttitor libero dictum non. Sed accumsan, orci sit amet scelerisque maximus, justo augue tristique nisl, eu pharetra leo justo nec mi. Suspendisse potenti. Etiam nibh nibh, lobortis sit amet augue non, dictum finibus nisl. Sed auctor dui vitae ligula ultricies dictum.', 3.8, '2019-03-03', 1, 15, 5),
 (11, 'Java Android programátor', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis risus dictum, auctor dui in, gravida elit. Sed non luctus leo, vel maximus eros. Nunc luctus tristique quam id lobortis. Nullam in ante sit amet lacus pharetra tincidunt eget aliquam metus. Nunc dapibus lorem lacinia neque sollicitudin, sit amet porta diam tincidunt. Pellentesque lobortis feugiat massa et efficitur. Donec tincidunt eget metus euismod ullamcorper. Nunc ante nibh, auctor in orci vel, laoreet viverra dolor. Vivamus magna massa, feugiat in lorem sit amet, lobortis vulputate dolor. Morbi facilisis viverra turpis ut consectetur. Morbi fermentum diam eu metus rutrum, in ultricies est aliquam. Integer tincidunt urna diam. Sed commodo, urna in feugiat tincidunt, justo dolor pulvinar libero, ut ultricies nisl lorem vitae erat. Cras posuere, ex a semper faucibus, urna quam vulputate nisi, et convallis mauris lacus malesuada turpis. Integer bibendum mattis elit rhoncus iaculis.\r\n\r\nSed lorem erat, finibus at pretium quis, tempor nec ipsum. Nam hendrerit tellus eu augue dapibus, ac rutrum leo pharetra. Donec scelerisque sit amet eros eget gravida. Maecenas vestibulum ipsum a elit sodales consectetur. Morbi vitae accumsan nisi. Mauris gravida mattis metus, sit amet imperdiet metus suscipit non. Donec nec leo lobortis, rutrum sapien nec, condimentum dui. Nam et erat ligula. Suspendisse bibendum eleifend sapien, eu porttitor libero dictum non. Sed accumsan, orci sit amet scelerisque maximus, justo augue tristique nisl, eu pharetra leo justo nec mi. Suspendisse potenti. Etiam nibh nibh, lobortis sit amet augue non, dictum finibus nisl. Sed auctor dui vitae ligula ultricies dictum.', 4.8, '2019-03-22', 1, 15, 4),
 (12, 'Java EE developer', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis risus dictum, auctor dui in, gravida elit. Sed non luctus leo, vel maximus eros. Nunc luctus tristique quam id lobortis. Nullam in ante sit amet lacus pharetra tincidunt eget aliquam metus. Nunc dapibus lorem lacinia neque sollicitudin, sit amet porta diam tincidunt. Pellentesque lobortis feugiat massa et efficitur. Donec tincidunt eget metus euismod ullamcorper. Nunc ante nibh, auctor in orci vel, laoreet viverra dolor. Vivamus magna massa, feugiat in lorem sit amet, lobortis vulputate dolor. Morbi facilisis viverra turpis ut consectetur. Morbi fermentum diam eu metus rutrum, in ultricies est aliquam. Integer tincidunt urna diam.', 5.3, '2019-05-18', 1, 18, 5),
@@ -77,7 +76,6 @@ CREATE TABLE `brigady_has_studenti` (
 INSERT INTO `brigady_has_studenti` (`id`, `idbrigady`, `idstudenti`, `nastup`, `ukoncenie`, `aktivna`, `doh_hod_mzda`, `provizia`) VALUES
 (3, 12, 16, '2019-06-03', '2019-11-30', 0, 5.3, 1),
 (12, 13, 19, '2019-04-15', NULL, 1, 4.5, 0.5),
-(13, 9, 20, '2018-06-03', '2018-09-30', 0, 4.8, 0.5),
 (14, 16, 18, '2019-05-28', NULL, 1, 6.9, 0.8),
 (15, 11, 17, '2019-06-03', '2020-01-01', 1, 5, 0.5);
 
@@ -97,7 +95,6 @@ CREATE TABLE `kategorie` (
 --
 
 INSERT INTO `kategorie` (`idkategorie`, `kategoria`) VALUES
-(6, '.NET programátor'),
 (8, 'Administratívny pracovník'),
 (4, 'Android programátor'),
 (9, 'Databázový analytik'),
@@ -338,14 +335,14 @@ ALTER TABLE `brigady`
 -- Obmedzenie pre tabuľku `brigady_has_studenti`
 --
 ALTER TABLE `brigady_has_studenti`
-  ADD CONSTRAINT `fk_brigady_has_studenti_brigady1` FOREIGN KEY (`idbrigady`) REFERENCES `brigady` (`idbrigady`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_brigady_has_studenti_brigady1` FOREIGN KEY (`idbrigady`) REFERENCES `brigady` (`idbrigady`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_brigady_has_studenti_studenti1` FOREIGN KEY (`idstudenti`) REFERENCES `studenti` (`idstudenti`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Obmedzenie pre tabuľku `studenti_has_zrucnosti`
 --
 ALTER TABLE `studenti_has_zrucnosti`
-  ADD CONSTRAINT `fk_studenti_has_zrucnosti_studenti1` FOREIGN KEY (`studenti_idstudenti`) REFERENCES `studenti` (`idstudenti`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_studenti_has_zrucnosti_studenti1` FOREIGN KEY (`studenti_idstudenti`) REFERENCES `studenti` (`idstudenti`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_studenti_has_zrucnosti_zrucnosti1` FOREIGN KEY (`zrucnosti_idzrucnosti`) REFERENCES `zrucnosti` (`idzrucnosti`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
